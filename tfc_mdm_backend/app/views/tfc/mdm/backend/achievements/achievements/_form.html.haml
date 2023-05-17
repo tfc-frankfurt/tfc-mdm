@@ -1,0 +1,8 @@
+= form.association :club
+= form.association :category, label_method: :name
+= form.input :achiever, as: :polymorphic_association, classes: { Tfc::Mdm::Club => url_for([:autocomplete, Tfc::Mdm::Club]), Tfc::Mdm::Person => url_for([:autocomplete, Tfc::Mdm::Person]) }
+= form.input :happened_at, as: :string, input_html: { type: :date }
+= form.input :title
+= form.input :body
+= form.input :published, as: :boolean
+= form.input :image

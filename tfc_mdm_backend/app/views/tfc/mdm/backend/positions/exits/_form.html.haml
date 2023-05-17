@@ -1,0 +1,3 @@
+= form.association :club, label_method: :human, collection: Tfc::Mdm::Club.all
+= form.association :entry, label_method: :human, collection: Tfc::Mdm::Positions::Entry.all
+= form.input :happened_at, as: :date_picker, icons: :font_awesome

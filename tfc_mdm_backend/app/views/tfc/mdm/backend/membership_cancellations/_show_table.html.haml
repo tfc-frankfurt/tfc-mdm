@@ -1,0 +1,5 @@
+= table.association :club, label_method: :human, link_to: ->(r) { url_for(r.club) }
+= table.association :person, label_method: :human, link_to: ->(r) { url_for(r.person) }
+= table.association :membership_agreement, label_method: :human, link_to: ->(r) { url_for(r.membership_agreement) }
+= table.row :entry_at
+= table.timestamps

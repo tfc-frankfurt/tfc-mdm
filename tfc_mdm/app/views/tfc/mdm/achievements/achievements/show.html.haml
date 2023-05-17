@@ -1,0 +1,40 @@
+%h1
+  = @resource.title
+  %small= @resource.achiever.human
+
+%hr
+/ Portfolio Item Row
+.row
+  .col-md-8
+    :ruby
+      image_src = if @resource.image.present?
+        main_app.url_for(@resource.image.variant(resize: "750x500^", gravity: 'center', crop: "750x500+0+0"))
+      else
+        "https://placehold.it/700x300"
+      end
+    %img.img-fluid{:alt => "", :src => image_src}/
+  .col-md-4
+    = markup_helper(self).render(@resource, :body)
+/ /.row
+/ Related Projects Row
+-# %h3.my-4 Related Projects
+-# .row
+-#   .col-md-3.col-sm-6.mb-4
+-#     %a{:href => "#"}
+-#       %img.img-fluid{:alt => "", :src => "https://placehold.it/500x300"}/
+-#   .col-md-3.col-sm-6.mb-4
+-#     %a{:href => "#"}
+-#       %img.img-fluid{:alt => "", :src => "https://placehold.it/500x300"}/
+-#   .col-md-3.col-sm-6.mb-4
+-#     %a{:href => "#"}
+-#       %img.img-fluid{:alt => "", :src => "https://placehold.it/500x300"}/
+-#   .col-md-3.col-sm-6.mb-4
+-#     %a{:href => "#"}
+-#       %img.img-fluid{:alt => "", :src => "https://placehold.it/500x300"}/
+/ /.row
+
+.page-actions.row.mt-3
+  .col-12
+    = link_to(main_app.root_path, class: 'btn btn-secondary btn-responsive') do
+      %i.fas.fa-chevron-left
+      %span.btn-text= t('.back')

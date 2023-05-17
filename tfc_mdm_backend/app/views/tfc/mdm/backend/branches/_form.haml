@@ -1,0 +1,7 @@
+= form.association :club
+= form.input :identifier
+= form.input :name
+= form.input :description, as: :text, input_html: { 'data-add-editor': true, 'data-editor-syntax': 'textile' }
+= form.input :valid_from, as: :string, input_html: { type: :date }
+= form.input :valid_to, as: :string, input_html: { type: :date }
+= form.input :assets, as: :file, input_html: { multiple: true }

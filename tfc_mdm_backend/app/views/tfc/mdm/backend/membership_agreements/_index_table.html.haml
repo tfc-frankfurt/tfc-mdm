@@ -1,0 +1,16 @@
+= table.association :club, sort: { column_name: :"tfc_mdm_clubs.name" }, label_method: :human, link_to: ->(resource) { url_for(resource.club) }
+= table.association :person, sort: { column_name: :"tfc_mdm_people.firstname" }, label_method: :human, link_to: ->(resource) { url_for(resource.person) }
+= table.column :salutation, sort: true
+= table.column :firstname, sort: true
+= table.column :lastname, sort: true
+= table.column :street, sort: true
+= table.column :zipcode, sort: true
+= table.column :city, sort: true
+= table.column :country, sort: true
+= table.date :birthdate, sort: true
+= table.column :phone, sort: true
+= table.email :email, sort: true
+= table.timestamp :entry_at, sort: true
+= table.timestamps sort: true
+= table.column :services do |membership_agreement|
+  - link_to Tfc::Mdm::CreatePersonFromMembershipAgreementService.human, new_create_person_from_membership_agreement_service_path('create_person_from_membership_agreement_service[membership_agreement_id]': membership_agreement.id), class: 'btn btn-primary btn-xs'

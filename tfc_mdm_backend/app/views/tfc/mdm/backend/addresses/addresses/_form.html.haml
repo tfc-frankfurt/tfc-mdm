@@ -1,0 +1,14 @@
+= form.input :record_type
+= form.input :record_id
+
+= form.association :role, label_method: :identifier
+
+= form.input :valid_from, as: :string, input_html: { type: :date }
+= form.input :valid_to, as: :string, input_html: { type: :date }
+
+= form.input :line1
+= form.input :line2
+= form.input :street
+= form.input :zipcode
+= form.input :city
+= form.input :country

@@ -1,0 +1,8 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+gemspec
+gem "simple_form-fake_inputs", path: "../simple_form-fake_inputs"
+gem "timeline_events", path: "../timeline_events"
+gem "cmor-translations", path: "~/projects/gems/cmor-translations"
+gem "rails", "6.1.4"

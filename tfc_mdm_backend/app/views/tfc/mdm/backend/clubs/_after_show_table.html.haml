@@ -1,0 +1,14 @@
+.panel.panel-default
+  .panel-body
+    #people-map
+      .markers
+        - if resource.addresses.first.present?
+          %headquarter{ data: { center: true, role: 'headquarter', label: resource.name, lat: resource.addresses.first.latitude, lng: resource.addresses.first.longitude, color: 'green' } }
+        - resource.people.each do |person|
+          - if person.addresses.first.present?
+            %person{ data: { role: 'person', label: person.fullname, lat: person.addresses.first.latitude, lng: person.addresses.first.longitude, color: 'blue' } }
+      .map
+
+.panel.panel.default
+  .timeline.timeline-alternating
+    = timeline_helper(self).render(:club_events, resource.events.sort.reverse, alternate_positions: true)

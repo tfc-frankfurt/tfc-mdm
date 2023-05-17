@@ -1,0 +1,5 @@
+= table.thumbnail :logo
+= table.column :name
+= table.association :establishment, label_method: :human
+= table.timestamps
+= tfc_mdm_backend_helper(self).addressable_table_columns(table)

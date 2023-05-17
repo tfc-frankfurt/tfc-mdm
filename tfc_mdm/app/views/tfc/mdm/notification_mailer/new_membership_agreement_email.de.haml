@@ -1,0 +1,30 @@
+%h1= "Neuanmeldung: #{@membership_agreement.fullname}"
+
+.message-body
+  Ein neues Mitglied ist zum #{l(@membership_agreement.entry_at)} eingetreten:
+
+  .membership-agreement
+    .panel.panel-success
+      .panel-heading
+        %h3.panel-title= @membership_agreement.model_name.human
+      = render_resource(@membership_agreement, as: :bootstrap_attribute_table) do |table|
+        = table.row :salutation
+        = table.row :firstname
+        = table.row :lastname
+        = table.row :street
+        = table.row :zipcode
+        = table.row :city
+        = table.row :birthdate
+        = table.row :phone
+        = table.row :email, as: :email
+
+  %p
+    Alle Daten anzeigen:
+    = link_to(@membership_agreement.fullname, tfc_mdm_backend.url_for(@membership_agreement), class: 'btn btn-default')
+
+.message-footer
+  %p
+    Liebe Grüße,
+    %br
+    #{@chairman_fullname}
+    

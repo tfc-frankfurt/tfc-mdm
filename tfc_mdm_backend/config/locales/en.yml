@@ -1,0 +1,5 @@
+en:
+  classes:
+    tfc/mdm/backend/engine: "NPO Masterdata"
+  routes:
+    tfc-mdm-backend-engine: 'npo-masterdata'

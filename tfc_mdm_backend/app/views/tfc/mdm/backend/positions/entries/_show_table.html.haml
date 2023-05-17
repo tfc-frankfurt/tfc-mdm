@@ -1,0 +1,9 @@
+= table.association :club, label_method: ->(r) { administrador_helper(self).label_for(r) }, link_to: ->(r) { url_for(r.club) }
+= table.association :position, label_method: ->(r) { administrador_helper(self).label_for(r) }, link_to: ->(r) { url_for(r.position) }
+= table.thumbnail :image
+= table.association :positionable, label_method: ->(r) { administrador_helper(self).label_for(r) }, link_to: ->(r) { url_for(r.positionable) }
+= table.association :exit, label_method: ->(r) { administrador_helper(self).label_for(r) }, link_to: ->(r) { url_for(r.exit) }
+= table.email :email
+= table.timestamp :happened_at
+= table.row :description
+= table.timestamps

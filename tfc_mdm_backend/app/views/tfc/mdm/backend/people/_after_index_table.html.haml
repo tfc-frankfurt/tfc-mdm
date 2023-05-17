@@ -1,0 +1,8 @@
+.panel.panel-default
+  .panel-body
+    #people-map
+      .markers
+        - @collection.each do |person|
+          - if person.current_address.present?
+            %person{ data: { label: person.fullname, lat: person.current_address.latitude, lng: person.current_address.longitude } }
+      .map

@@ -1,0 +1,6 @@
+= table.column :salutation, sort: true
+= table.column :firstname, sort: true
+= table.column :lastname, sort: true
+= table.date :birthdate, sort: true
+= table.association :current_address, label_method: :oneline, link_to: ->(r) { url_for(r.current_address) }
+= table.timestamps sort: true

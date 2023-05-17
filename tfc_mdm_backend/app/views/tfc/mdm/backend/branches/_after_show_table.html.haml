@@ -1,0 +1,14 @@
+.row
+  .col-12
+    %h3= Tfc::Mdm::Addresses::Address.model_name.human
+  .col-12
+    = collection_table(collection: resource.addresses) do |table|
+      = table.column :human
+      = render partial: '/administrador/resources_controller/base/index_table_actions', locals: { table: table }
+
+.row
+  .col-12
+    %h3= resource.class.human_attribute_name(:images)
+  - resource.images.each do |image|
+    .col-lg-4.d-flex.align-items-stretch
+      = bootstrap_helper(self).card(image_options: { src: main_app.url_for(image)}, additional_css_classes: 'text-center border-0' )

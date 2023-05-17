@@ -1,0 +1,8 @@
+%h1= t('.title', **inflections)
+
+= tfc_mdm_helper(self).achievements(@collection)
+
+.well.page-actions
+  = link_to(main_app.root_path, class: 'btn btn-secondary btn-responsive') do
+    %i.fas.fa-chevron-left
+    %span.btn-text= t('.back')

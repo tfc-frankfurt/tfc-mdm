@@ -1,0 +1,5 @@
+de:
+  classes:
+    tfc/mdm/backend/engine: "Vereinsstammdaten"
+  routes:
+    tfc-mdm-backend-engine: 'vereinsstammdaten'

@@ -1,0 +1,6 @@
+= table.column :current_address do |resource|
+  - resource.current_address.try(:human)
+= table.column :additional_actions, title: false do |resource|
+  - link_to(new_addresses_address_path(address: { record_type: resource.class.name, record_id: resource.to_param }), class: 'btn btn-xs btn-primary btn-responsive') do
+    %i.fas.fa-address-card
+    %span.btn-text= t('.addressable_table_columns.new_address')

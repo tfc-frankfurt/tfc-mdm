@@ -1,0 +1,11 @@
+= table.thumbnail :logo
+= table.association :club, label_method: :name, link_to: ->(r) { url_for(r.club) }, sort: { column_name: "tfc_mdm_clubs.name" }
+= table.column :name, sort: true
+= table.column :happened_at, sort: true
+= table.column :line1, sort: true
+= table.column :line2, sort: true
+= table.column :street, sort: true
+= table.column :zipcode, sort: true
+= table.column :city, sort: true
+= table.column :country, sort: true
+= table.timestamps sort: true

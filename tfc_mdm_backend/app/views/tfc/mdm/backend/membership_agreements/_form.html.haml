@@ -1,0 +1,13 @@
+= form.association :club
+= form.input :salutation
+= form.input :firstname
+= form.input :lastname
+= form.input :street
+= form.input :zipcode
+= form.input :city
+= form.input :country
+= form.input :birthdate, as: :string, input_html: { type: :date }
+= form.input :phone
+= form.input :email
+= form.input :entry_at, as: :string, input_html: { type: :date }
+= form.input :call_create_person_from_membership_agreement_service, as: :fake_checkbox

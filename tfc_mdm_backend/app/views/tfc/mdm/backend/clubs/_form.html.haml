@@ -1,0 +1,5 @@
+= form.association :establishment
+- if form.object.persisted?
+  = form.input :name
+= form.input :logo
+= form.input :favicon

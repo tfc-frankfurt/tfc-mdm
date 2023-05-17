@@ -1,0 +1,22 @@
+- if @resource.current_address.present?
+  .row
+    .col-12
+      %h3= Tfc::Mdm::Addresses::Address.model_name.human
+    .col-12
+      = resource_table(resource: @resource.current_address) do |t|
+        = t.row :line1
+        = t.row :line2
+        = t.row :street
+        = t.row :zipcode
+        = t.row :city
+        = t.row :country
+.row
+  .col-12
+    #people-map
+      .markers
+        - @resource.clubs.each do |club|
+          - if club.current_address.present?
+            %headquarter{ data: { center: true, role: 'headquarter', label: club.name, lat: club.current_address.latitude, lng: club.current_address.longitude, color: 'green' } }
+        - if @resource.current_address.present?
+          %person{ data: { role: 'person', label: @resource.fullname, lat:  @resource.current_address.latitude, lng:  @resource.current_address.longitude } }
+      .map

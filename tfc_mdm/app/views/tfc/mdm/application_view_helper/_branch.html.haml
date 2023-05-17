@@ -1,0 +1,21 @@
+.row
+  .col-md-12.col-lg-6
+    %h2
+      = branch.name
+    %small= branch.current_address.oneline
+    
+    = branch.description(format = :html)
+  
+  .col-md-12.col-lg-6
+    #branch-map.embed-responsive.embed-responsive-4by3.mb-3
+    :javascript
+      var Karte = L.map('branch-map').setView([#{branch.current_address.latitude}, #{branch.current_address.longitude}], 15);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      'attribution':  'Kartendaten &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> Mitwirkende',
+      'useCache': true
+      }).addTo(Karte);
+
+      var marker = L.marker([#{branch.current_address.latitude},#{branch.current_address.longitude}]).addTo(Karte);
+      marker.bindPopup("<h4>#{branch.club.human} - #{branch.name}</h4><p>#{branch.current_address.human}</p>").openPopup();
+
+= frontend_helper(self).inline_gallery(branch.images)

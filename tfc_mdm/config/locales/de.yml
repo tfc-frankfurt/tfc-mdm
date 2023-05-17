@@ -1,0 +1,236 @@
+de:
+  activerecord:
+    models:
+      tfc/mdm/achievements/achievement:
+        one: Errungenschaft
+        other: Errungenschaften
+      tfc/mdm/addresses/address:
+        one: Adresse
+        other: Adressen
+      tfc/mdm/addresses/role:
+        one: Rolle
+        other: Rollen
+      tfc/mdm/branch:
+        one: Location
+        other: Locations
+      tfc/mdm/club:
+        one: Verein
+        other: Vereine
+      tfc/mdm/establishment:
+        one: Gründung
+        other: Gründungen
+      tfc/mdm/membership_agreement:
+        one: Anmeldung
+        other: Anmeldungen
+      tfc/mdm/membership_cancellation:
+        one: Austritt
+        other: Austritte
+      tfc/mdm/person:
+        one: Person
+        other: Personen
+      tfc/mdm/positions/entry:
+        one: Amtsantritt
+        other: Amtsantritte
+      tfc/mdm/positions/exit:
+        one: Amtsabtritt
+        other: Amtabtritte
+      tfc/mdm/positions/position:
+        one: Amt
+        other: Ämter
+    attributes:
+      tfc/mdm/achievements/achievement:
+        id: ID
+        category: Kategorie
+        category_id: Kategorie
+        club: Verein
+        club_id: Verein
+        achiever_type: Achiever-Typ
+        achiever: Achiever
+        achiever_id: Achiever
+        title: Titel
+        body: Beschreibung
+        happened_at: Erzielt am
+        published_at: Veröffentlicht am
+        position: Position
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      tfc/mdm/addresses/address:
+        id: ID
+        club_id: Verein
+        club: Verein
+        city: Ort
+        country: Land
+        latitude: Breitengrad
+        line1: 1. Zeile
+        line2: 2. Zeile
+        longitude: Längengrad
+        record_id: Objekt ID
+        record_type: Objekt-Typ
+        record: Objekt
+        role_id: Rolle
+        role: Rolle
+        street: Strasse
+        valid_from: Gültig von
+        valid_to: Gültig bis
+        zipcode: Postleitzahl
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      tfc/mdm/addresses/role:
+        id: ID
+        club_id: Verein
+        club: Verein
+        identifier: Bezeichner
+        created_at: Erstellt am
+        updated_at:  Aktualisiert am
+      tfc/mdm/branch:
+        id: ID
+        assets: Dateien
+        club_id: Verein
+        club: Verein
+        current_addresses: Aktuelle Adressen
+        description: Beschreibung
+        identifier: Bezeichner
+        images: Bilder
+        name: Name
+        valid_from: Gültig von
+        valid_to: Gültig bis
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      tfc/mdm/club:
+        id: ID
+        name: Name
+        establishment: Gründung
+        establishment_id: Gründung
+        established_at: Gegründet am
+        logo: Logo
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+        current_address: Aktuelle Adresse
+        active_members_count: Aktive Mitglieder
+      tfc/mdm/create_club_from_establishment_service:
+        establishment_id: Gründung
+      tfc/mdm/create_person_from_membership_agreement_service:
+        membership_agreement_id: Anmeldung
+      tfc/mdm/establishment:
+        id: ID
+        club_id: Verein
+        club: Verein
+        country: Land
+        happened_at: Zeitpunkt
+        name: Name
+        logo: Logo
+        line1: 1. Zeile
+        line2: 2. Zeile
+        street: Strasse
+        zipcode: Postleitzahl
+        city: Ort
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      tfc/mdm/membership_agreement:
+        id: ID
+        club: Verein
+        club_id: Verein
+        country: Land
+        entry_at: Datum
+        person: Person
+        person_id: Person
+        salutation: Anrede
+        firstname: Vorname
+        lastname: Nachname
+        street: Strasse
+        zipcode: Postleitzahl
+        city: Ort
+        birthdate: Geburtsdatum
+        phone: Telefon
+        email: E-Mail
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      tfc/mdm/membership_cancellation:
+        id: ID
+        club: Verein
+        club_id: Verein
+        entry_at: Eintrag am
+        person: Person
+        person_id: Person
+        membership_agreement: Anmeldung
+        membership_agreement_id: Anmeldung
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      tfc/mdm/person:
+        id: ID
+        club_id: Verein
+        club: Verein
+        age: Alter
+        salutation: Anrede
+        firstname: Vorname
+        lastname: Nachname
+        birthdate: Geburtsdatum
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      tfc/mdm/positions/entry:
+        id: ID
+        club_id: Verein
+        club: Verein
+        exit_id: Amtsabtritt
+        exit: Amtsabtritt
+        position_id: Amt
+        position: Amt
+        positionable_type: Amtsträger-Typ
+        positionable_id: Amtsträger-ID
+        positionable: Amtsträger
+        happened_at: Zeitpunkt
+        email: E-Mail
+        description: Beschreibung
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      tfc/mdm/positions/exit:
+        id: ID
+        club_id: Verein
+        club: Verein
+        entry_id: Amtsantritt
+        happened_at: Zeitpunkt
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      tfc/mdm/positions/position:
+        id: ID
+        club_id: Verein
+        club: Verein
+        name_de: Name (Deutsch)
+        name_en: Name (English)
+        name: Name
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+  classes:
+    tfc/mdm/club_established: Gründung
+    tfc/mdm/create_club_from_establishment_service: Dienst zur Erstellung von Vereinen aus Gründungen
+    tfc/mdm/create_person_from_membership_agreement_service: Dienst zur Extraktion von Personendaten aus Beitritten
+    tfc/mdm/membership_cancellation_signed: Austritt
+    tfc/mdm/membership_agreement_signed: Beitritt
+    tfc/mdm/person_born: Geburt
+  rao:
+    component:
+      collection_table:
+        addressable_table_columns:
+          new_address: Adresse hinzufügen
+  routes:
+    tfc_mdm_engine: 'vereine'
+    branches: 'locations'
+  tfc:
+    mdm:
+      application_view_helper:
+        achievement:
+          more: Mehr
+      achievements:
+        achievements:
+          index:
+            back: 'Zurück'
+            title: "%{collection_name}"
+          show:
+            back: 'Zurück'
+      branches:
+        index:
+          back: 'Zurück'
+          title: "%{collection_name}"
+      notification_mailer:
+        new_membership_agreement_email:
+          subject: "[%{club_name}] Neuanmeldung zum %{membership_agreement_entry_at}: %{member_fullname}"

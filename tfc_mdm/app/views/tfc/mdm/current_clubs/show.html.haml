@@ -1,0 +1,10 @@
+.row
+  .col-12
+    %h1
+      = @resource.name
+      %small= I18n.l(@resource.established_at)
+
+.row
+  .col-12
+    = resource_table(resource: @resource) do |table|
+      = table.row :active_members_count

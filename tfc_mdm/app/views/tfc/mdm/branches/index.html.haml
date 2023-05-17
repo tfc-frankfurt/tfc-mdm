@@ -1,0 +1,6 @@
+%h1= t('.title', **inflections)
+
+= tfc_mdm_helper(self).branches(@collection)
+
+.well.page-actions
+  = link_to(t('.back'), main_app.root_path, class: 'btn btn-secondary')

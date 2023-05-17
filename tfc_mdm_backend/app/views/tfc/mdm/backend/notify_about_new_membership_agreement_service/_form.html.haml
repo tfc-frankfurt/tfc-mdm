@@ -1,0 +1,3 @@
+= form.input :membership_agreement_id, collection: Tfc::Mdm::MembershipAgreement.order(entry_at: :desc).all, label_method: ->(resource){ "#{resource.fullname} - #{I18n.l(resource.entry_at)}" }
+= form.input :chairman_fullname
+= form.input :recipients

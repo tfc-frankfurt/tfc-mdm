@@ -1,0 +1,5 @@
+= table.association :club, sort: { column_name: :"tfc_mdm_clubs.name" }, label_method: :human, link_to: ->(r) { url_for(r.club) }
+= table.association :person, sort: { column_name: :"tfc_mdm_people.firstname" }, label_method: :human, link_to: ->(r) { url_for(r.person) }
+= table.association :membership_agreement, label_method: :human
+= table.column :entry_at, sort: true
+= table.timestamps sort: true

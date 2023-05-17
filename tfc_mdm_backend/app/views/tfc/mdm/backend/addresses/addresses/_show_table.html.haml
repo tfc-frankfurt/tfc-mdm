@@ -1,0 +1,12 @@
+= table.row :record do |resource| # , label_method: ->(r) { administrador_helper(self).resource_label_for(r) }
+  - link_to(administrador_helper(self).resource_label_for(resource.record), url_for(resource.record))
+= table.association :role, label_method: ->(r) { administrador_helper(self).resource_label_for(r) }
+= table.timestamp :valid_from
+= table.timestamp :valid_to
+= table.row :line1
+= table.row :line2
+= table.row :street
+= table.row :zipcode
+= table.row :city
+= table.row :country
+= table.timestamps

@@ -1,0 +1,9 @@
+= table.acts_as_list_actions
+= table.thumbnail :image
+= table.association :club, label_method: :human, link_to: ->(r) { url_for(r.club) }
+= table.association :category, label_method: :human, link_to: ->(r) { url_for(r.category) }
+= table.association :achiever, label_method: :human, link_to: ->(r) { url_for(r.achiever) }
+= table.column :title, sort: true
+= table.timestamp :happened_at, sort: true
+= table.timestamps sort: true
+= table.acts_as_published_actions

@@ -1,0 +1,16 @@
+.row.mb-3
+  .col-md-7
+    %a{:href => "#"}
+      :ruby
+        image_src = if achievement.image.present?
+          main_app.url_for(achievement.image.variant(resize: "700x300^", gravity: 'center', crop: "700x300+0+0"))
+        else
+          "https://placehold.it/700x300"
+        end
+      %img.img-fluid.mb-3.mb-md-0{src: image_src}/
+  .col-md-5
+    %h3= achievement.title
+    %p= achievement.body
+    = link_to(achievement, class: 'btn btn-primary') do
+      = t('.more')
+      %i.fas.fa-chevron-right

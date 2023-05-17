@@ -1,0 +1,2 @@
+
+  mount Tfc::Mdm::Api::Engine, at: "/api/tfc-mdm"

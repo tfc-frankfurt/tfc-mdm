@@ -1,0 +1,7 @@
+= form.association :club
+= form.association :position, label_method: :name
+= form.input :positionable, as: :polymorphic_association, classes: { Tfc::Mdm::Person => url_for([:autocomplete, Tfc::Mdm::Person]) }
+= form.input :happened_at, as: :string, input_html: { type: :date }
+= form.input :email
+= form.input :description
+= form.input :image
