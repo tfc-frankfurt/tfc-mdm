@@ -20,8 +20,21 @@ Gem::Specification.new do |spec|
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   spec.add_dependency "rails", ">= 6.1.4"
+  spec.add_dependency "cmor-core-api"
+  spec.add_dependency "tfc_mdm"
   spec.add_dependency "rao-api-resources_controller"
   spec.add_dependency "rao-api-service_controller"
   spec.add_dependency "rao-query"
+  spec.add_dependency "responders"
+
+  spec.add_development_dependency "factory_bot_rails"
+  spec.add_development_dependency "rspec-rails"
+  spec.add_development_dependency "rails-dummy"
+  spec.add_development_dependency "rao-shoulda_matchers"
+  spec.add_development_dependency "bootsnap"
+  spec.add_development_dependency "webpacker"
+  spec.add_development_dependency "guard-rspec"
+  spec.add_development_dependency "guard-bundler"
   spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency "sprockets-rails"
 end

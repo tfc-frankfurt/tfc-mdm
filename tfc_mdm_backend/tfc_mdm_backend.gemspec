@@ -18,7 +18,19 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails"
   s.add_dependency "cmor_core"
+  s.add_dependency "cmor_core_backend"
   s.add_dependency "tfc_mdm"
   s.add_dependency "country_select"
   s.add_dependency "twitter-bootstrap-components-rails", '>= 1.0.0'
+
+  s.add_development_dependency "capybara"
+  s.add_development_dependency "factory_bot_rails"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "rails-dummy"
+  s.add_development_dependency "rao-shoulda_matchers"
+  s.add_development_dependency "bootsnap"
+  s.add_development_dependency "webpacker"
+  s.add_development_dependency "guard-rspec"
+  s.add_development_dependency "guard-bundler"
+  s.add_development_dependency "sqlite3"
 end

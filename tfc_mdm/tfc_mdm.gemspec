@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "acts_as_published"
   s.add_dependency "cmor-translations"
   s.add_dependency "geocoder"
+  s.add_dependency "rao-service"
   s.add_dependency "route_translator"
   s.add_dependency "simple_form-fake_inputs"
   s.add_dependency "simple_form-polymorphic_associations"
