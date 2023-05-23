@@ -15,6 +15,7 @@ module Tfc
       has_one_attached :favicon
 
       validates :establishment, :name, presence: true
+      validates :name, uniqueness: true
 
       autocomplete scope: ->(matcher) { where("tfc_mdm_clubs.name LIKE :term", term: "%#{matcher.downcase}%") }, id_method: :id, text_method: :human
 
