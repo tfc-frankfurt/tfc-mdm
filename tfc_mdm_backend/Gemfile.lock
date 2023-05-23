@@ -159,6 +159,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    capybara-select-2 (0.5.1)
     cmor (0.0.60.pre)
     cmor_core (0.0.60.pre)
       bootstrap-kaminari-views
@@ -290,7 +291,11 @@ GEM
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (5.0.1)
+    puma (6.2.2)
+      nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.7)
     rack-proxy (0.7.6)
@@ -369,6 +374,7 @@ GEM
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    rexml (3.2.5)
     route_translator (13.1.0)
       actionpack (>= 5.2, < 7.1)
       activesupport (>= 5.2, < 7.1)
@@ -393,6 +399,11 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.0)
+    rubyzip (2.3.2)
+    selenium-webdriver (4.9.1)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     semantic_range (3.0.0)
     shellany (0.0.1)
     simple_form (5.2.0)
@@ -433,6 +444,7 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
+    websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -446,14 +458,18 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
+  capybara-select-2
   cmor-translations!
   factory_bot_rails
   guard-bundler
   guard-rspec
+  pry-rails
+  puma
   rails (= 6.1.4)
   rails-dummy!
   rao-shoulda_matchers
   rspec-rails
+  selenium-webdriver
   simple_form-fake_inputs!
   sqlite3
   tfc_mdm!

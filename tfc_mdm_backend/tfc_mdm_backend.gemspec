@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "twitter-bootstrap-components-rails", '>= 1.0.0'
 
   s.add_development_dependency "capybara"
+  s.add_development_dependency "capybara-select-2"
   s.add_development_dependency "factory_bot_rails"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "rails-dummy"
@@ -32,5 +33,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "webpacker"
   s.add_development_dependency "guard-rspec"
   s.add_development_dependency "guard-bundler"
+  s.add_development_dependency "pry-rails"
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "selenium-webdriver"
+  s.add_development_dependency "puma"
 end

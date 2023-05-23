@@ -8,6 +8,10 @@ module Tfc
           include Rao::ResourcesController::ActsAsPublishedConcern
           include Rao::ResourcesController::ActsAsListConcern
 
+          def self.engine_class
+            ::Tfc::Mdm::Backend::Engine
+          end
+
           def self.resource_class
             Tfc::Mdm::Achievements::Achievement
           end
