@@ -1,9 +1,33 @@
 de:
+  activemodel:
+    models:
+      tfc/mdm/create_club_from_establishment_service:
+        one: Dienst zur Erstellung von Vereinen aus Gründungen
+        other: Dienste zur Erstellung von Vereinen aus Gründungen
+      tfc/mdm/create_person_from_membership_agreement_service:
+        one: Dienst zur Extraktion von Personendaten aus Beitritten
+        other: Dienste zur Extraktion von Personendaten aus Beitritten
+      tfc/mdm/notify_about_new_membership_agreement_service:
+        one: Dienst zur Benachrichtigung über neue Beitritte
+        other: Dienste zur Benachrichtigung über neue Beitritte
+    attributes:
+      tfc/mdm/create_club_from_establishment_service:
+        establishment_id: Gründung
+      tfc/mdm/create_person_from_membership_agreement_service:
+        membership_agreement: Anmeldung
+        membership_agreement_id: Anmeldung
+      tfc/mdm/notify_about_new_membership_agreement_service:
+        chairman_fullname: Name des Vorstands
+        membership_agreement_id: Anmeldung
+        recipients: Empfänger
   activerecord:
     models:
       tfc/mdm/achievements/achievement:
         one: Errungenschaft
         other: Errungenschaften
+      tfc/mdm/achievements/category:
+        one: Kategorie
+        other: Kategorien
       tfc/mdm/addresses/address:
         one: Adresse
         other: Adressen
@@ -52,6 +76,14 @@ de:
         happened_at: Erzielt am
         published_at: Veröffentlicht am
         position: Position
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      tfc/mdm/achievements/category:
+        id: ID
+        club: Verein
+        club_id: Verein
+        name_de: Name (DE)
+        name_en: Name (EN)
         created_at: Erstellt am
         updated_at: Aktualisiert am
       tfc/mdm/addresses/address:

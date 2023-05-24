@@ -4,17 +4,19 @@ require "rails_helper"
 
 RSpec.describe "Translations", type: :model do
   {
-    Tfc::Mdm::Addresses::Address     => { locales: [:de] },
-    Tfc::Mdm::Addresses::Role        => { locales: [:de] },
-    Tfc::Mdm::Positions::Entry       => { locales: [:de] },
-    Tfc::Mdm::Positions::Exit        => { locales: [:de] },
-    Tfc::Mdm::Positions::Position    => { locales: [:de] },
-    Tfc::Mdm::Branch                 => { locales: [:de] },
-    Tfc::Mdm::Club                   => { locales: [:de] },
-    Tfc::Mdm::Establishment          => { locales: [:de] },
-    Tfc::Mdm::MembershipAgreement    => { locales: [:de] },
-    Tfc::Mdm::MembershipCancellation => { locales: [:de] },
-    Tfc::Mdm::Person                 => { locales: [:de] },
+    Tfc::Mdm::Achievements::Achievement => { locales: [:de] },
+    Tfc::Mdm::Achievements::Category    => { locales: [:de] },
+    Tfc::Mdm::Addresses::Address        => { locales: [:de] },
+    Tfc::Mdm::Addresses::Role           => { locales: [:de] },
+    Tfc::Mdm::Positions::Entry          => { locales: [:de] },
+    Tfc::Mdm::Positions::Exit           => { locales: [:de] },
+    Tfc::Mdm::Positions::Position       => { locales: [:de] },
+    Tfc::Mdm::Branch                    => { locales: [:de] },
+    Tfc::Mdm::Club                      => { locales: [:de] },
+    Tfc::Mdm::Establishment             => { locales: [:de] },
+    Tfc::Mdm::MembershipAgreement       => { locales: [:de] },
+    Tfc::Mdm::MembershipCancellation    => { locales: [:de] },
+    Tfc::Mdm::Person                    => { locales: [:de] },
   }.each do |model, options|
     options[:locales] ||= I18n.available_locales
     options[:locales].each do |locale|
