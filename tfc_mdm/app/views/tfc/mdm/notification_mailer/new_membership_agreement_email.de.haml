@@ -7,7 +7,7 @@
     .panel.panel-success
       .panel-heading
         %h3.panel-title= @membership_agreement.model_name.human
-      = render_resource(@membership_agreement, as: :bootstrap_attribute_table) do |table|
+      = resource_table(resource: @membership_agreement) do |table|
         = table.row :salutation
         = table.row :firstname
         = table.row :lastname

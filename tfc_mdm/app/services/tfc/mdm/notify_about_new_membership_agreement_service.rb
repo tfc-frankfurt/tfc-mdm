@@ -7,28 +7,30 @@ module Tfc::Mdm
 
     attr_accessor :membership_agreement_id, :chairman_fullname, :recipients
 
+    validates :membership_agreement_id, presence: true
+
+    def recipients
+      @recipients ||= "vorstand@tfc-frankfurt.de"
+    end
+
+    def chairman_fullname
+      @chairman_fullname ||= "Roberto"
+    end
+
     private
 
-      def _perform
-        if Tfc::Mdm::NotificationMailer.new_membership_agreement_email(membership_agreement, chairman_fullname, recipients.split(" ")).deliver
-          info "Delivered notification about the new membership agreement #{membership_agreement} to: #{recipients}", indent: 1
+    def _perform
+      say "Delivering email" do
+        if Tfc::Mdm::NotificationMailer.new_membership_agreement_email(membership_agreement, chairman_fullname, recipients.split(" ")).deliver_later
+          say "Delivered notification about the new membership agreement #{membership_agreement} to: #{recipients}"
         else
-          info "Failed delivering notification about the new membership agreement #{membership_agreement} to: #{recipients}", indent: 1
+          say "Failed delivering notification about the new membership agreement #{membership_agreement} to: #{recipients}"
         end
-        say "Done"
-        response
       end
+    end
 
-      def membership_agreement
-        @membership_agreement ||= Tfc::Mdm::MembershipAgreement.find(membership_agreement_id)
-      end
-
-      def recipients
-        @recipients ||= "vorstand@tfc-frankfurt.de"
-      end
-
-      def chairman_fullname
-        @chairman_fullname ||= "Roberto"
-      end
+    def membership_agreement
+      @membership_agreement ||= Tfc::Mdm::MembershipAgreement.find(membership_agreement_id)
+    end
   end
 end

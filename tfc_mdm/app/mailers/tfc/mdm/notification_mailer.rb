@@ -2,6 +2,8 @@
 
 module Tfc::Mdm
   class NotificationMailer < ApplicationMailer
+    helper Rao::Component::ApplicationHelper
+
     def new_membership_agreement_email(membership_agreement, chairman_fullname, recipient_user_email_addresses)
       @chairman_fullname = chairman_fullname
       @membership_agreement = membership_agreement
