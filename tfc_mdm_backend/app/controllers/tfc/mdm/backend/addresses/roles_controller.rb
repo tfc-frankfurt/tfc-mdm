@@ -5,6 +5,10 @@ module Tfc
     module Backend
       module Addresses
         class RolesController < Cmor::Core::Backend::ResourcesController::Base
+          def self.engine_class
+            ::Tfc::Mdm::Backend::Engine
+          end
+
           def self.resource_class
             Tfc::Mdm::Addresses::Role
           end
@@ -12,7 +16,7 @@ module Tfc
           private
 
             def permitted_params
-              params.require(:role).permit %i(identifier)
+              params.require(:addresses_role).permit(:club_id, :identifier)
             end
         end
       end

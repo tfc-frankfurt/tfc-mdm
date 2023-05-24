@@ -1,5 +1,4 @@
-= form.input :record_type
-= form.input :record_id
+= form.input :record, as: :polymorphic_association, classes: { Tfc::Mdm::Club => url_for([:autocomplete, Tfc::Mdm::Club]), Tfc::Mdm::Person => url_for([:autocomplete, Tfc::Mdm::Person]) }
 
 = form.association :role, label_method: :identifier
 

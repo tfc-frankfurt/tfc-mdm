@@ -14,31 +14,6 @@ RSpec.describe "/de/backend/vereinsstammdaten/positions/entries", type: :feature
   # List
   it { resources; expect(subject).to implement_index_action(self) }
 
-  #  # Create
-  #  it {
-  #    sign_in(user)
-  #    tfc_mdm_positions_position
-  #    tfc_mdm_person
-  #    expect(subject).to implement_create_action(self)
-  #      .for(resource_class)
-  #      .within_form("#new_positions_entry") {
-  #        # fill the needed form inputs via capybara here
-  #        #
-  #        # Example:
-  #        #
-  #        #     select 'de', from: 'slider[locale]'
-  #        #     fill_in 'slider[name]', with: 'My first slider'
-  #        #     check 'slider[auto_start]'
-  #        #     fill_in 'slider[interval]', with: '3'
-  #        select tfc_mdm_club.human, from: "positions_entry[club_id]"
-  #        select tfc_mdm_positions_position.human, from: "positions_entry[position_id]"
-  #        select tfc_mdm_person.class.model_name.human, from: "positions_entry[positionable_type]"
-  #        find("#select2-positions_entry_positionable_id-container").click
-  #        select tfc_mdm_person.fullname, from: "positions_entry_positionable_id"
-  #      }
-  #      .increasing {  Tfc::Mdm::Positions::Entry.count }.by(1)
-  #  }
-
   # Read
   it { expect(subject).to implement_show_action(self).for(resource) }
 

@@ -5,6 +5,10 @@ module Tfc
     module Backend
       module Achievements
         class CategoriesController < Cmor::Core::Backend::ResourcesController::Base
+          def self.engine_class
+            ::Tfc::Mdm::Backend::Engine
+          end
+
           def self.resource_class
             Tfc::Mdm::Achievements::Category
           end
