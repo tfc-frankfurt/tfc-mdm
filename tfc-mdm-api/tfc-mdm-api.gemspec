@@ -3,8 +3,8 @@ require_relative "lib/tfc/mdm/api/version"
 Gem::Specification.new do |spec|
   spec.name        = "tfc-mdm-api"
   spec.version     = Tfc::Mdm::Api::VERSION
-  spec.authors     = ["Roberto Vasquez Angel"]
-  spec.email       = ["roberto@vasquez-angel.de"]
+  spec.authors     = ["BeeGood IT"]
+  spec.email       = ["info@beegoodit.de"]
   spec.homepage    = "https://www.tfc-frankfurt.de"
   spec.summary     = "TFC Master Data Management Api"
   spec.license     = "MIT"
@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", ">= 6.1.4"
   spec.add_dependency "cmor-core-api"
-  spec.add_dependency "tfc_mdm"
+  spec.add_dependency "tfc-mdm"
   spec.add_dependency "rao-api-resources_controller"
   spec.add_dependency "rao-api-service_controller"
   spec.add_dependency "rao-query"
