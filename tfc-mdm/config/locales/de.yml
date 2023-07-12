@@ -265,6 +265,9 @@ de:
         index:
           back: 'Zurück'
           title: "%{collection_name}"
+      clubs:
+        show:
+          back: 'Zurück'
       notification_mailer:
         new_membership_agreement_email:
           subject: "[%{club_name}] Neuanmeldung zum %{membership_agreement_entry_at}: %{member_fullname}"
