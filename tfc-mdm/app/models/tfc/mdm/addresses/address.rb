@@ -4,7 +4,7 @@ module Tfc
   module Mdm
     class Addresses::Address < ApplicationRecord
       belongs_to :record, polymorphic: true
-      belongs_to :role
+      belongs_to :role, inverse_of: :addresses
 
       validates :line1, :street, :zipcode, :city, :country, presence: true
 

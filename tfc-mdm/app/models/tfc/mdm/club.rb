@@ -54,6 +54,7 @@ module Tfc
 
         included do
           has_many :addresses, class_name: "Tfc::Mdm::Addresses::Address", as: :record, dependent: :destroy
+          has_many :address_roles, class_name: "Tfc::Mdm::Addresses::Role", inverse_of: :club, dependent: :destroy
         end
 
         def current_address

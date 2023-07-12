@@ -12,6 +12,9 @@ de:
         other: Dienste zur Benachrichtigung über neue Beitritte
     attributes:
       tfc/mdm/create_club_from_establishment_service:
+        addresses_address: Adresse
+        addresses_role: Adresse-Rolle
+        club: Verein
         establishment_id: Gründung
       tfc/mdm/create_person_from_membership_agreement_service:
         membership_agreement: Anmeldung
@@ -139,8 +142,6 @@ de:
         updated_at: Aktualisiert am
         current_address: Aktuelle Adresse
         active_members_count: Aktive Mitglieder
-      tfc/mdm/create_club_from_establishment_service:
-        establishment_id: Gründung
       tfc/mdm/create_person_from_membership_agreement_service:
         membership_agreement_id: Anmeldung
       tfc/mdm/establishment:
