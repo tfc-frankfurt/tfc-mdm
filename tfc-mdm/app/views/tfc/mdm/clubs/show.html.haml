@@ -1,0 +1,20 @@
+.row
+  .col
+    %h1= @resource.human
+
+- if @resource.logo.attached?
+  .row
+    .col.d-flex.justify-content-center.align-items-center
+      = image_tag(main_app.url_for(@resource.logo), class: 'img-thumbnail border-0 img-fluid w-50 mt-4 mb-4')
+
+.row
+  .col
+    = resource_table(resource: @resource) do |table|
+      = table.row :name
+      = table.timestamp :established_at
+
+.row
+  .col
+    = link_to({ action: :index }, class: 'btn btn-primary btn-sm') do
+      %i.fa.fa-arrow-left
+      = t('.back')

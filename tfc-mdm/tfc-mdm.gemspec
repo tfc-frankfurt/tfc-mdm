@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails"
+  s.add_dependency "rails", ">= 6.1"
   s.add_dependency "acts_as_list"
   s.add_dependency "acts_as_published"
   s.add_dependency "cmor-translations"
@@ -26,6 +26,10 @@ Gem::Specification.new do |s|
   s.add_dependency "simple_form-fake_inputs"
   s.add_dependency "simple_form-polymorphic_associations"
   s.add_dependency "timeline_events"
+  s.add_dependency "rao-resources_controller"
+  s.add_dependency "rao-component"
+  s.add_dependency "friendly_id"
+  s.add_dependency "coffee-rails"
   
   s.add_development_dependency "guard-bundler"
   s.add_development_dependency "guard-rspec"
@@ -38,4 +42,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rails-dummy"
   s.add_development_dependency "capybara"
   s.add_development_dependency "sqlite3", "~> 1.4"
+  s.add_development_dependency "sprockets-rails"
 end

@@ -17,8 +17,9 @@ cd spec/dummy
 # Use correct Gemfile
 sed -i "s|../Gemfile|../../../Gemfile|g" config/boot.rb
 
-# Setup Webpacker
+# Setup Webpacker/Asset Pipeline
 sed -i '17i\require "webpacker"' config/application.rb
+sed -i '17i\require "sprockets/rails"' config/application.rb
 rails webpacker:install
 
 # Setup simple_form

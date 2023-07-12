@@ -15,9 +15,13 @@ module Tfc
 
         private
 
-          def permitted_params
-            params.require(:club).permit %i(establishment_id name logo favicon)
-          end
+        def permitted_params
+          params.require(:club).permit %i(establishment_id name logo favicon)
+        end
+
+        def load_resource_scope
+          super.friendly
+        end
       end
     end
   end

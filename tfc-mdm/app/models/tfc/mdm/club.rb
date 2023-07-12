@@ -4,6 +4,9 @@ module Tfc
   module Mdm
     class Club < ActiveRecord::Base
       include SimpleFormPolymorphicAssociations::Model::AutocompleteConcern
+      extend FriendlyId
+
+      friendly_id :name, use: [:slugged]
 
       belongs_to :establishment
       has_many :membership_agreements, dependent: :restrict_with_error

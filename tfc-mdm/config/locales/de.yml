@@ -133,15 +133,16 @@ de:
         updated_at: Aktualisiert am
       tfc/mdm/club:
         id: ID
-        name: Name
-        establishment: Gründung
-        establishment_id: Gründung
+        active_members_count: Aktive Mitglieder
+        current_address: Aktuelle Adresse
         established_at: Gegründet am
+        establishment_id: Gründung
+        establishment: Gründung
         logo: Logo
+        name: Name
+        slug: Slug
         created_at: Erstellt am
         updated_at: Aktualisiert am
-        current_address: Aktuelle Adresse
-        active_members_count: Aktive Mitglieder
       tfc/mdm/create_person_from_membership_agreement_service:
         membership_agreement_id: Anmeldung
       tfc/mdm/establishment:

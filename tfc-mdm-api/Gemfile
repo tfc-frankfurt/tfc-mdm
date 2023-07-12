@@ -13,3 +13,4 @@ gem "rao-api-resources_controller", path: "~/projects/gems/rao/rao-api-resources
 gem "rao-api-service_controller", path: "~/projects/gems/rao/rao-api-service_controller"
 gem "rao-query", path: "~/projects/gems/rao/rao-query"
 gem "rails-dummy", github: "robotex82/rails-dummy", branch: "feature/ruby-3-2-compatibility"
+gem "rails", ">= 7"

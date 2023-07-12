@@ -9,6 +9,8 @@ Tfc::Mdm::Engine.routes.draw do
         resources :achievements, only: [:index, :show]
       end
 
+      resources :clubs, only: [:index, :show], path: "/"
+
       root to: "branches#index"
     end
   end
