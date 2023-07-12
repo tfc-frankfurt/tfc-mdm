@@ -57,7 +57,7 @@ de:
         other: Amtsantritte
       tfc/mdm/positions/exit:
         one: Amtsabtritt
-        other: Amtabtritte
+        other: Amtsabtritte
       tfc/mdm/positions/position:
         one: Amt
         other: Ämter
