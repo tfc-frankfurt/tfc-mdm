@@ -6,7 +6,8 @@ module Tfc
       belongs_to :club
       has_many :addresses, inverse_of: :role
 
-      validates :identifier, presence: true, uniqueness: true
+      validates :identifier, presence: true
+      validates :identifier, uniqueness: { scope: [ :club_id ] }
 
       def human
         identifier
