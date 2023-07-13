@@ -20,7 +20,7 @@ module Tfc
       validates :establishment, :name, presence: true
       validates :name, uniqueness: true
 
-      autocomplete scope: ->(matcher) { where("tfc_mdm_clubs.name LIKE :term", term: "%#{matcher.downcase}%") }, id_method: :id, text_method: :human
+      autocomplete scope: ->(matcher) { where("lower(tfc_mdm_clubs.name) LIKE :term", term: "%#{matcher.downcase}%") }, id_method: :id, text_method: :human
 
       def events
         [
