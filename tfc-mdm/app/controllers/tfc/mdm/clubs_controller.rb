@@ -7,6 +7,8 @@ module Tfc::Mdm
 
     helper Rao::Component::ApplicationHelper
 
+    view_helper Tfc::Mdm::ApplicationViewHelper, as: :tfc_mdm_helper
+
     def self.resource_class
       Tfc::Mdm::Club
     end
