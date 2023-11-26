@@ -18,6 +18,7 @@ RSpec.describe Tfc::Mdm::CreateClubFromEstablishmentService, type: :service do
 
     describe "result" do
       it { expect(subject.perform).to be_a(Rao::Service::Result::Base) }
+      it { expect(subject.perform).to be_ok}
       it { expect(subject.perform.errors.full_messages).to match_array([]) }
     end
 

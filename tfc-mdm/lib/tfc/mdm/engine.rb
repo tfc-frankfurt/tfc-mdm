@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Tfc
   module Mdm
     class Engine < ::Rails::Engine

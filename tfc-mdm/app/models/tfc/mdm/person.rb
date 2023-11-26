@@ -15,7 +15,7 @@ module Tfc
       validates :birthdate, presence: true
 
       # autocomplete scope: ->(matcher) { where("lower(tfc_mdm_people.firstname) LIKE :term", term: "%#{matcher.downcase}%") }, id_method: :id, text_method: :human
-      autocomplete scope: ->(matcher) { where("lower(TRIM(CONCAT(tfc_mdm_people.firstname, ' ', tfc_mdm_people.lastname))) LIKE :term", term: "%#{matcher.downcase}%") }, id_method: :id, text_method: :human
+      autocomplete scope: ->(matcher) { where("lower(TRIM(tfc_mdm_people.firstname || ' ' || tfc_mdm_people.lastname)) LIKE :term", term: "%#{matcher.downcase}%") }, id_method: :id, text_method: :human
 
       def events
         [
