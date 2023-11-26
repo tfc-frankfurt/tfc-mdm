@@ -1,15 +1,6 @@
 GIT
   remote: https://github.com/content-management-on-rails/cmor
-  revision: e5fcdd800b26f8582a8740ab381dd36b3a874d94
-  branch: feature/cmor-core-api
-  specs:
-    cmor (0.0.61.pre)
-
-GIT
-  remote: https://github.com/content-management-on-rails/cmor
-  revision: e5fcdd800b26f8582a8740ab381dd36b3a874d94
-  branch: feature/cmor-core-api
-  glob: cmor-core-api/*.gemspec
+  revision: f26496dd0a5ea82a9c3112595db3dac12e437e3a
   specs:
     cmor-core-api (0.0.61.pre)
       bcrypt
@@ -17,11 +8,10 @@ GIT
       rails (>= 6.1)
 
 GIT
-  remote: https://github.com/content-management-on-rails/cmor
-  revision: e5fcdd800b26f8582a8740ab381dd36b3a874d94
-  branch: feature/cmor-core-api
-  glob: cmor_core/*.gemspec
+  remote: https://github.com/content-management-on-rails/cmor-legacy
+  revision: 9e8a3ebcb38dae4fb9ce516da36abc5de8233553
   specs:
+    cmor (0.0.61.pre)
     cmor_core (0.0.61.pre)
       bootstrap-kaminari-views
       cmor (= 0.0.61.pre)
@@ -67,21 +57,21 @@ GIT
 PATH
   remote: ../../rao/rao-api-resources_controller
   specs:
-    rao-api-resources_controller (0.0.48.pre)
+    rao-api-resources_controller (0.0.49.pre)
       rails (>= 6.1)
       rao
 
 PATH
   remote: ../../rao/rao-api-service_controller
   specs:
-    rao-api-service_controller (0.0.48.pre)
+    rao-api-service_controller (0.0.49.pre)
       rails (>= 6.1)
       rao
 
 PATH
   remote: ../../rao/rao-query
   specs:
-    rao-query (0.0.48.pre)
+    rao-query (0.0.49.pre)
       rails (>= 6.1)
       rao
       rao-view_helper
