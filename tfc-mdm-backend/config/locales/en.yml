@@ -3,3 +3,9 @@ en:
     tfc/mdm/backend/engine: "NPO Masterdata"
   routes:
     tfc-mdm-backend-engine: 'npo-masterdata'
+  tfc:
+    mdm:
+      backend:
+        clubs:
+          event_timeline:
+            title: "Timeline"

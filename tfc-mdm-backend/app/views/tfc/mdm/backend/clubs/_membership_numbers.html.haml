@@ -1,0 +1,57 @@
+- result = Tfc::Mdm::CalculateClubMembershipNumbersService.call!(club: @resource)
+
+.card.mb-4
+  .card-header
+    %i.fas.fa-chart-line
+    = Tfc::Mdm::CalculateClubMembershipNumbersService.model_name.human
+  .card-body
+    = collection_table(collection: result.membership_numbers, size: :small, striped: true, hover: true) do |t|
+      = t.column :year do |r|
+        - r.year.strftime("%Y")
+      = t.column :membership_agreements_count do |r|
+        - r.membership_agreements.count
+      = t.column :membership_cancellations_count do |r|
+        - r.membership_cancellations.count
+      = t.column :active_members_at_start_of_year do |r|
+        - r.active_members_at_start_of_year.count
+      = t.column :active_members_at_end_of_year do |r|
+        - r.active_members_at_end_of_year.count
+      = t.column :membership_development do |r|
+        - r.membership_development.count
+
+.card
+  .card-header
+    %ul.nav.nav-tabs.card-header-tabs{ role: "tablist" }
+      - result.years.each_with_index do |year, i|
+        %li.nav-item
+          %a.nav-link{ id: "membership_numbers-#{year.strftime("%Y")}-tab", data: { toggle: "tab" }, href: "#membership_numbers-#{year.strftime("%Y")}", class: (i == 0 ? "active" : ""), role: "tab", aria: { controls: "home", selected: (i == 0 ? "true" : nil) } }= year.strftime("%Y")
+      %li.nav-item
+        %a.nav-link{ id: "home-tab", data: { toggle: "tab" }, href: "#home", role: "tab", aria: { controls: "home", selected: "true" } } Home
+      %li.nav-item
+        %a.nav-link{ id: "profile-tab", data: { toggle: "tab" }, href: "#profile", role: "tab", aria: { controls: "profile", selected: "false" } } Profile
+      %li.nav-item
+        %a.nav-link{ id: "contact-tab", data: { toggle: "tab" }, href: "#contact", role: "tab", aria: { controls: "contact", selected: "false" } } Contact
+
+  .card-body
+    %div.tab-content
+      - result.years.each_with_index do |year, i|
+        %div.tab-pane.fade{ id: "membership_numbers-#{year.strftime("%Y")}", class: (i == 0 ? "show active" : ""), role: "tabpanel", aria: { labelledby: "membership_numbers-#{year.strftime("%Y")}" } }
+          .row
+            .col-12.col-md-6
+              %h3= Tfc::Mdm::MembershipAgreement.model_name.human(count: :other)
+
+              = collection_table(collection: result.membership_numbers_for_year(year).membership_agreements, size: :small, striped: true, hover: true) do |t|
+                = t.id
+                = t.association :person, label_method: :human
+                = t.timestamp :entry_at
+                = render partial: '/administrador/resources_controller/base/index_table_actions', locals: { table: t }
+
+
+            .col-12.col-md-6
+              %h3= Tfc::Mdm::MembershipCancellation.model_name.human(count: :other)
+
+              = collection_table(collection: result.membership_numbers_for_year(year).membership_cancellations, size: :small, striped: true, hover: true) do |t|
+                = t.id
+                = t.association :person, label_method: :human
+                = t.timestamp :entry_at
+                = render partial: '/administrador/resources_controller/base/index_table_actions', locals: { table: t }

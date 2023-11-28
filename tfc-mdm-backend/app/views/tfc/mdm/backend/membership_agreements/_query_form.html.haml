@@ -1,8 +1,21 @@
-= form.input :salutation_cont
-= form.input :firstname_cont
-= form.input :lastname_cont
-= form.input :street_cont
-= form.input :zipcode_cont
-= form.input :city_cont
-= form.input :phone_cont
-= form.input :email_cont
+.row
+  .col-12.col-md
+    = form.input :club_id_eq, collection: Tfc::Mdm::Club.all.map { |c| [c.human, c.id] }, include_blank: true
+  .col-12.col-md
+    = form.input :salutation_eq, collection: @collection.pluck(:salutation).uniq, include_blank: true
+  .col-12.col-md
+    = form.input :firstname_cont
+.row
+  .col-12.col-md
+    = form.input :lastname_cont
+  .col-12.col-md
+    = form.input :street_cont
+  .col-12.col-md
+    = form.input :zipcode_cont
+.row
+  .col-12.col-md
+    = form.input :city_cont
+  .col-12.col-md
+    = form.input :phone_cont
+  .col-12.col-md
+    = form.input :email_cont

@@ -11,6 +11,12 @@ module Tfc
 
       validates :salutation, :firstname, :lastname, :street, :zipcode, :city, :country, :birthdate, :phone, :email, :entry_at, presence: true
 
+      scope :happened_in_year, ->(year) { happened_after(year.beginning_of_year).happened_before(year.end_of_year) }
+      scope :happened_before, ->(point_in_time) { where("tfc_mdm_membership_agreements.entry_at < ?", point_in_time) }
+      scope :happened_after, ->(point_in_time) { where("tfc_mdm_membership_agreements.entry_at > ?", point_in_time) }
+
+      scope :not_cancelled, -> { where.missing(:membership_cancellation) }
+
       def to_event
         MembershipAgreementSigned.new(membership_agreement: self, happened_at: entry_at, color: "#d4edda")
       end
@@ -19,8 +25,12 @@ module Tfc
         "#{salutation} #{firstname} #{lastname}"
       end
 
+      # def human
+      #   "[#{self.class.model_name.human}] #{club.human} - #{fullname}"
+      # end
+
       def human
-        "[#{self.class.model_name.human}] #{club.human} - #{fullname}"
+        [club&.human, person&.human, entry_at].compact.join(" ")
       end
     end
   end

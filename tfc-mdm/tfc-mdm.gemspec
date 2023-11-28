@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency "simple_form-polymorphic_associations"
   s.add_dependency "timeline_events"
   s.add_dependency "rao-resources_controller"
+  s.add_dependency "rao-active_collection"
   s.add_dependency "rao-component"
   s.add_dependency "friendly_id"
   s.add_dependency "coffee-rails"

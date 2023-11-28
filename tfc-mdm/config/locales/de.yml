@@ -1,6 +1,12 @@
 de:
   activemodel:
     models:
+      tfc/mdm/calculate_club_membership_numbers_service:
+        one: Mitgliederzahlen Berechnung
+        other: Mitgliederzahlen Berechnung
+      tfc/mdm/club_membership_numbers:
+        one: Mitgliderzahlen
+        other: Mitgliderzahlen
       tfc/mdm/create_club_from_establishment_service:
         one: Dienst zur Erstellung von Vereinen aus Gründungen
         other: Dienste zur Erstellung von Vereinen aus Gründungen
@@ -11,6 +17,17 @@ de:
         one: Dienst zur Benachrichtigung über neue Beitritte
         other: Dienste zur Benachrichtigung über neue Beitritte
     attributes:
+      tfc/mdm/calculate_club_membership_numbers_service:
+        club: Verein
+      tfc/mdm/club_membership_numbers:
+        year: Jahr
+        membership_agreements: Eintritte
+        membership_agreements_count: Eintritte
+        membership_cancellations: Austritte
+        membership_cancellations_count: Austritte
+        active_members_at_start_of_year: Aktive am Jahreende
+        active_members_at_end_of_year: Aktive am Jahresanfang
+        membership_development: Entwicklung
       tfc/mdm/create_club_from_establishment_service:
         addresses_address: Adresse
         addresses_role: Adresse-Rolle

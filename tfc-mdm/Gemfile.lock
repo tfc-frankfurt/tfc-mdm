@@ -41,6 +41,7 @@ PATH
       friendly_id
       geocoder
       rails (>= 6.1)
+      rao-active_collection
       rao-component
       rao-resources_controller
       rao-service
@@ -325,6 +326,9 @@ GEM
       zeitwerk (~> 2.6)
     rake (13.1.0)
     rao (0.0.51.pre)
+    rao-active_collection (0.0.51.pre)
+      rails (>= 6.1)
+      rao
     rao-component (0.0.51.pre)
       haml-rails
       rails (>= 6.1)

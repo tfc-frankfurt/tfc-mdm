@@ -3,3 +3,9 @@ de:
     tfc/mdm/backend/engine: "Vereinsstammdaten"
   routes:
     tfc-mdm-backend-engine: 'vereinsstammdaten'
+  tfc:
+    mdm:
+      backend:
+        clubs:
+          event_timeline:
+            title: "Timeline"
