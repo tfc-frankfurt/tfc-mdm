@@ -22,19 +22,13 @@
 .card
   .card-header
     %ul.nav.nav-tabs.card-header-tabs{ role: "tablist" }
-      - result.years.each_with_index do |year, i|
+      - result.years.reverse.each_with_index do |year, i|
         %li.nav-item
           %a.nav-link{ id: "membership_numbers-#{year.strftime("%Y")}-tab", data: { toggle: "tab" }, href: "#membership_numbers-#{year.strftime("%Y")}", class: (i == 0 ? "active" : ""), role: "tab", aria: { controls: "home", selected: (i == 0 ? "true" : nil) } }= year.strftime("%Y")
-      %li.nav-item
-        %a.nav-link{ id: "home-tab", data: { toggle: "tab" }, href: "#home", role: "tab", aria: { controls: "home", selected: "true" } } Home
-      %li.nav-item
-        %a.nav-link{ id: "profile-tab", data: { toggle: "tab" }, href: "#profile", role: "tab", aria: { controls: "profile", selected: "false" } } Profile
-      %li.nav-item
-        %a.nav-link{ id: "contact-tab", data: { toggle: "tab" }, href: "#contact", role: "tab", aria: { controls: "contact", selected: "false" } } Contact
 
   .card-body
     %div.tab-content
-      - result.years.each_with_index do |year, i|
+      - result.years.reverse.each_with_index do |year, i|
         %div.tab-pane.fade{ id: "membership_numbers-#{year.strftime("%Y")}", class: (i == 0 ? "show active" : ""), role: "tabpanel", aria: { labelledby: "membership_numbers-#{year.strftime("%Y")}" } }
           .row
             .col-12.col-md-6
