@@ -11,7 +11,7 @@ module Tfc
         private
 
           def load_collection_scope
-            super.joins(:club).includes(:person)
+            super.joins(:club).includes(:person).order(entry_at: :desc)
           end
 
           def permitted_params
