@@ -30,6 +30,16 @@ Tfc::Mdm::Backend::Engine.routes.draw do
     end
   end
 
+  namespace :memberships do
+    resources :billing_run_services, only: [:new, :create]
+    resources :categories
+    resources :events
+    resources :event_types
+    resources :fees
+    resources :memberships
+    resources :import_from_membership_agreement_services, only: [:new, :create]
+  end
+
   namespace :positions do
     resources :positions
     resources :entries

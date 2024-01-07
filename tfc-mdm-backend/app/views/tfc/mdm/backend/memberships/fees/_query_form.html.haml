@@ -1,0 +1,5 @@
+.row
+  .col
+    = form.input :name_cont, association: :club
+  .col
+    = form.input :category_id_eq, label_method: -> (r) { r.human_value_name(:identifier) }, collection: Tfc::Mdm::Memberships::Category.all

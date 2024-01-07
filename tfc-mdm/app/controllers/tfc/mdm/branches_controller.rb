@@ -8,17 +8,15 @@ module Tfc
       include Rao::ResourcesController::RestResourceUrlsConcern
       include Rao::ResourcesController::ResourceInflectionsConcern
 
-      # helper ResourceRenderer::ViewHelper
-
       def self.resource_class
         Tfc::Mdm::Branch
       end
 
       private
 
-        def load_collection_scope
-          super.order(valid_to: :desc).valid.all
-        end
+      def load_collection_scope
+        super.order(valid_to: :desc).valid.all
+      end
     end
   end
 end

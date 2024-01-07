@@ -12,9 +12,17 @@ module Tfc
 
         private
 
-          def permitted_params
-            params.require(:person).permit %i(salutation firstname lastname birthdate)
-          end
+        def resource_path(resource)
+          polymorphic_path(resource)
+        end
+
+        def edit_resource_path(resource)
+          edit_polymorphic_path(resource)
+        end
+
+        def permitted_params
+          params.require(:person).permit %i(salutation firstname lastname birthdate user_id)
+        end
       end
     end
   end

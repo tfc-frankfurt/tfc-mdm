@@ -11,6 +11,10 @@ Tfc::Mdm::Engine.routes.draw do
 
       resources :clubs, only: [:index, :show], path: "/"
 
+      namespace :memberships do
+        resources :memberships, only: [:index, :show]
+      end
+
       root to: "branches#index"
     end
   end

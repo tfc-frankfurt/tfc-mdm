@@ -1,0 +1,7 @@
+.row
+  .col
+    = form.input :firstname_cont, association: :person, label_method: :human
+  .col
+    = form.input :lastname_cont, association: :person, label_method: :human
+  .col
+    = form.input :event_type_id_eq, label_method: :human, collection: Tfc::Mdm::Memberships::EventType.all

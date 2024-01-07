@@ -11,8 +11,11 @@ module Tfc
       belongs_to :establishment
       has_many :membership_agreements, dependent: :restrict_with_error
       has_many :membership_cancellations, dependent: :restrict_with_error
-      has_many :people, through: :membership_agreements, dependent: :restrict_with_error
       has_many :branches, dependent: :restrict_with_error
+      has_many :memberships_categories, dependent: :restrict_with_error, class_name: "Tfc::Mdm::Memberships::Category"
+      has_many :memberships, class_name: "Tfc::Mdm::Memberships::Membership"
+      has_many :memberships_events, through: :memberships, class_name: "Tfc::Mdm::Memberships::Event", source: :events
+      has_many :people, through: :memberships, dependent: :restrict_with_error
 
       has_one_attached :logo
       has_one_attached :favicon
@@ -24,22 +27,21 @@ module Tfc
 
       def events
         [
-          [Tfc::Mdm::ClubEstablished.new(club: self, happened_at: established_at, color: "#cce5ff")] +
-            membership_agreements.map(&:to_event) +
-            membership_cancellations.map(&:to_event)
+          [to_timeline_event] +
+            memberships_events.map(&:to_timeline_event)
         ].flatten.sort
       end
 
-      def active_memberships
-        membership_agreements.includes(:membership_cancellation).where(tfc_mdm_membership_cancellations: { membership_agreement_id: nil })
+      def to_timeline_event
+        Timeline::Event.new(title: Tfc::Mdm::Establishment.model_name.human, description: human, happened_at: established_at, color: "#cce5ff")
       end
 
       def active_members_count
-        active_memberships.count("tfc_mdm_membership_agreements.id")
+        memberships.active.count
       end
 
       def active_members_average_age
-        ages = active_memberships.map(&:person).map(&:age)
+        ages = memberships.active.map(&:person).map(&:age)
         return 0 if ages.empty?
         ages.instance_eval { reduce(:+) / size.to_f }
       end

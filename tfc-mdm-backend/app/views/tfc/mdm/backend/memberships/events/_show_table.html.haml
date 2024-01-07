@@ -1,0 +1,6 @@
+= table.id
+= table.association :membership, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.membership) }
+= table.association :event_type, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.event_type) }
+= table.row :description
+= table.timestamp :happened_at
+= table.timestamps

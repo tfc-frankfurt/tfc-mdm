@@ -21,6 +21,11 @@ module Tfc
               Tfc::Mdm::Backend::Addresses::AddressesController,
               Tfc::Mdm::Backend::Addresses::LocationsController,
               Tfc::Mdm::Backend::Addresses::RolesController,
+              Tfc::Mdm::Backend::Memberships::CategoriesController,
+              Tfc::Mdm::Backend::Memberships::EventsController,
+              Tfc::Mdm::Backend::Memberships::EventTypesController,
+              Tfc::Mdm::Backend::Memberships::FeesController,
+              Tfc::Mdm::Backend::Memberships::MembershipsController
             ]
           end
         end

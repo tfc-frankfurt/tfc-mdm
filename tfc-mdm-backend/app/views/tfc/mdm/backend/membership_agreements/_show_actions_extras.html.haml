@@ -1,2 +1,2 @@
-= link_to(new_create_person_from_membership_agreement_service_path('create_person_from_membership_agreement_service[membership_agreement_id]': resource.id)"btn btn-primary btn-lg btn-circle", title: t(".update_from_external")) do
-  %i.fas.fa-update
+= link_to(new_polymorphic_path([tfc_mdm_backend, Tfc::Mdm::Memberships::ImportFromMembershipAgreementService], memberships_import_from_membership_agreement_service: {membership_agreement_id: @resource.id}), class: "btn btn-primary btn-lg btn-circle", title: Tfc::Mdm::Memberships::Membership.model_name.human) do
+  %i.fas.fa-plus

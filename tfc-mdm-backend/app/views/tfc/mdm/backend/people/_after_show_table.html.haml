@@ -1,22 +1,50 @@
-- if @resource.current_address.present?
-  .row
-    .col-12
-      %h3= Tfc::Mdm::Addresses::Address.model_name.human
-    .col-12
-      = resource_table(resource: @resource.current_address) do |t|
-        = t.row :line1
-        = t.row :line2
-        = t.row :street
-        = t.row :zipcode
-        = t.row :city
-        = t.row :country
 .row
   .col-12
-    #people-map
-      .markers
-        - @resource.clubs.each do |club|
-          - if club.current_address.present?
-            %headquarter{ data: { center: true, role: 'headquarter', label: club.name, lat: club.current_address.latitude, lng: club.current_address.longitude, color: 'green' } }
+    .card.mb-4
+      .card-header
+        %i.fa.fa-users
+        = Tfc::Mdm::Memberships::Membership.model_name.human(count: :other)
+      .card-body.p-0
+        = collection_table(collection: @resource.memberships, table_html: "table collection-table m-0") do |table|
+          = table.id
+          = table.association :club, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.club) }
+          = table.association :category, label_method: ->(r) { "#{r.human_value_name(:identifier)} (#{humanized_money_with_symbol(r.current_fee.amount)})"}, link_to: ->(r) { tfc_mdm_backend.url_for(r.category) }
+          = table.timestamp :active_from
+          = table.timestamp :active_to
+          = table.column :membership_state do |r|
+            - r.human_value_name(:membership_state)
+          = render partial: "administrador/resources_controller/base/index_table_actions", locals: { table: table }
+
+.row
+  .col-12.col-md-6
+    .card.mb-4
+      .card-header
+        %i.fa.fa-user
+        = Tfc::Mdm::Addresses::Role.human_value_name(:identifier, :primary_address)
         - if @resource.current_address.present?
-          %person{ data: { role: 'person', label: @resource.fullname, lat:  @resource.current_address.latitude, lng:  @resource.current_address.longitude } }
-      .map
+          = link_to(tfc_mdm_backend.polymorphic_path([:edit, @resource.current_address]), class: "btn btn-xs btn-primary float-right") do
+            %i.fas.fa-edit
+            = t("administrador.resources_controller.base.edit.title", resource_name: @resource.current_address.model_name.human)
+      .card-body.p-0
+        - if @resource.current_address.present?
+          = resource_table(resource: @resource.current_address, table_html: "table resource-table m-0") do |t|
+            = t.row :line1
+            = t.row :line2
+            = t.row :street
+            = t.row :zipcode
+            = t.row :city
+            = t.row :country
+
+  .col-12.col-md-6
+    .card.mb-4
+      .card-header
+        %i.fa.fa-map
+      .card-body
+        #people-map
+          .markers
+            - @resource.clubs.each do |club|
+              - if club.current_address.present?
+                %headquarter{ data: { center: true, role: 'headquarter', label: club.name, lat: club.current_address.latitude, lng: club.current_address.longitude, color: 'green' } }
+            - if @resource.current_address.present?
+              %person{ data: { role: 'person', label: @resource.fullname, lat:  @resource.current_address.latitude, lng:  @resource.current_address.longitude } }
+          .map

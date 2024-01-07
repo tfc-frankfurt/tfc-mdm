@@ -1,5 +1,5 @@
 = table.thumbnail :logo
 = table.column :name
-= table.association :establishment, label_method: :human
+= table.association :establishment, label_method: ->(r) { l(r.happened_at) }, link_to: ->(r) { tfc_mdm_backend.url_for(r.establishment) }
+= table.column :active_members_count
 = table.timestamps
-= tfc_mdm_backend_helper(self).addressable_table_columns(table)

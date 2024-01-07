@@ -5,9 +5,12 @@ module Tfc
     class Person < ActiveRecord::Base
       include SimpleFormPolymorphicAssociations::Model::AutocompleteConcern
 
+      belongs_to :user, class_name: Tfc::Mdm::Configuration.user_class_name, optional: true, inverse_of: :person
       has_many :membership_agreements
       has_many :membership_cancellations
-      has_many :clubs, through: :membership_agreements
+      has_many :memberships, dependent: :restrict_with_error, class_name: "Tfc::Mdm::Memberships::Membership", inverse_of: :person
+      has_many :memberships_events, through: :memberships, class_name: "Tfc::Mdm::Memberships::Event", source: :events
+      has_many :clubs, through: :memberships
 
       validates :salutation, presence: true
       validates :firstname, presence: true
@@ -19,10 +22,14 @@ module Tfc
 
       def events
         [
-          [Tfc::Mdm::PersonBorn.new(person: self, happened_at: birthdate)] +
-            membership_agreements.map(&:to_event) +
-            membership_cancellations.map(&:to_event)
+          [to_timeline_event] +
+          memberships_events.map(&:to_timeline_event) +
+          memberships_events.map(&:to_timeline_event)
         ].flatten.sort
+      end
+
+      def to_timeline_event
+        Timeline::Event.new(title: t(".birth"), description: human, happened_at: birthdate)
       end
 
       def age

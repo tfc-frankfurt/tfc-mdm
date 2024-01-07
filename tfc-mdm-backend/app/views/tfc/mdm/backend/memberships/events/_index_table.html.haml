@@ -1,0 +1,6 @@
+= table.id sort: true
+= table.association :membership, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.membership) }
+= table.association :event_type, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.event_type) }, sort: { column_name: "tfc_mdm_memberships_event_types.identifier" }
+= table.timestamp :happened_at, sort: true
+= table.timestamp :effective_at, sort: true
+= table.timestamps sort: true

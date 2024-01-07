@@ -1,0 +1,1 @@
+= form.input :identifier_eq, collection: resource_class.pluck(:identifier).uniq.map { |i| resource_class.human_value_name(:identifier, i) }

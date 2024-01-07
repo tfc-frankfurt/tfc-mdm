@@ -1,4 +1,4 @@
-require "cmor_core_backend"
+require "cmor-core-backend"
 require "country_select"
 require "rao-service"
 require "tfc-mdm"

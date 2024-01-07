@@ -36,28 +36,32 @@ module Tfc
       def calculate_membership_numbers_for_year(year)
         Tfc::Mdm::ClubMembershipNumbers.new(
           year: year,
-          membership_agreements: membership_agreements_for_year(year),
-          membership_cancellations: membership_cancellations_for_year(year),
+          agreements: agreements_for_year(year),
+          terminations: terminations_for_year(year),
           active_members_at_start_of_year: active_members_at_start_of_year(year),
           active_members_at_end_of_year: active_members_at_end_of_year(year),
-          membership_development: active_members_at_end_of_year(year) - active_members_at_start_of_year(year)
+          membership_development: agreements_for_year(year).count - terminations_for_year(year).count
         )
       end
 
-      def membership_agreements_for_year(year)
-        club.membership_agreements.happened_in_year(year)
+      def agreements_for_year(year)
+        # club.membership_agreements.happened_in_year(year)
+        club.memberships_events.agreements.for_year(year)
       end
 
-      def membership_cancellations_for_year(year)
-        club.membership_cancellations.happened_in_year(year)
+      def terminations_for_year(year)
+        # club.membership_cancellations.happened_in_year(year)
+        club.memberships_events.terminations.for_year(year)
       end
 
       def active_members_at_start_of_year(year)
-        club.membership_agreements.happened_before(year.beginning_of_year).not_cancelled
+        # club.membership_agreements.happened_before(year.beginning_of_year).not_cancelled
+        club.memberships.active_at(year.beginning_of_year)
       end
 
       def active_members_at_end_of_year(year)
-        club.membership_agreements.happened_before(year.end_of_year).not_cancelled
+        # club.membership_agreements.happened_before(year.end_of_year).not_cancelled
+        club.memberships.active_at(year.end_of_year)
       end
     end
   end

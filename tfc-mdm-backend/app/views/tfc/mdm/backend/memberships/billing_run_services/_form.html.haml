@@ -1,0 +1,75 @@
+.card.mb-4
+  .card-header
+    %i.fa.fa-cog
+    Settings
+  .card-body
+    .row
+      .col
+        = form.input :club_id, as: :select, collection: Tfc::Mdm::Club.all, include_blank: true
+      .col
+        = form.input :year, as: :select, collection: (Tfc::Mdm::Establishment.order(happened_at: :asc).pluck(:happened_at).first.year..Time.zone.now.year).to_a.reverse, include_blank: true
+
+- unless @service.errors.attribute_names.include?(:club)
+  %h2= @service.club.name
+  %table.table.table-striped.table-hover{ id: dom_id(@service.club) }
+    %thead
+      %tr
+        %th
+          %input{ type: :checkbox, data: { "select-all": true, "parent-id": dom_id(@service.club) } }
+        %th= Tfc::Mdm::Memberships::Membership.human_attribute_name(:id)
+        %th= Tfc::Mdm::Memberships::Membership.human_attribute_name(:person)
+        %th= Tfc::Mdm::Memberships::Membership.human_attribute_name(:category)
+        %th= Tfc::Mdm::Memberships::Membership.human_attribute_name(:events)
+        %th= Tfc::Mdm::Memberships::Membership.human_attribute_name(:active_from)
+        %th= Tfc::Mdm::Memberships::Membership.human_attribute_name(:active_to)
+        %th= Tfc::Mdm::Memberships::Membership.human_attribute_name(:full_months_active_in_year)
+        %th= Tfc::Mdm::Memberships::Membership.human_attribute_name(:total_fee_for_year)
+    %tbody
+      - @service.memberships.each do |membership|
+        = form.simple_fields_for :"memberships[]", membership do |membership_form|
+          %tr
+            %td
+              = membership_form.input :selected, as: :boolean, label: false
+            %td= membership.id
+            %td= membership.person.human
+            %td= membership.category.human_value_name(:identifier)
+            %td
+              = capture_haml do
+                - membership.events.in_year(@service.year_as_time).all.map do |event|
+                  %span.badge.badge-primary{ title: event.happened_at }= event.human
+            %td= membership.active_from
+            %td= membership.active_to
+            %td= membership.full_months_active_in_year(@service.year).size
+            %td= humanized_money_with_symbol(membership.total_fee_for_year(@service.year))
+    %tfoot
+      %tr
+        %th{ colspan: 8 }= Tfc::Mdm::Memberships::Membership.human_attribute_name(:total_fee_for_year)
+        %th= humanized_money_with_symbol(@service.total_membership_fee)
+
+:javascript
+  // when the year select changes, reload the page with the new year
+  $(document).on('change', '#memberships_billing_run_service_year', function() {
+    var year = $(this).val();
+    var url = new URL(window.location.href);
+    url.searchParams.set('year', year);
+    window.location.href = url.href;
+  });
+
+  // when the club select changes, reload the page with the new club
+  $(document).on('change', '#memberships_billing_run_service_club_id', function() {
+    var club_id = $(this).val();
+    var url = new URL(window.location.href);
+    url.searchParams.set('club_id', club_id);
+    window.location.href = url.href;
+  });
+
+  // implement select all
+  $(document).ready(function() {
+    console.log($("input[data-select-all]"))
+    $("input[data-select-all]").on('click', function() {
+      var parent_id = $(this).data('parent-id');
+      var checked = $(this).prop('checked');
+      var inputs = $("#" + parent_id + " input[type=checkbox]");
+      inputs.prop('checked', checked);
+    });
+  });

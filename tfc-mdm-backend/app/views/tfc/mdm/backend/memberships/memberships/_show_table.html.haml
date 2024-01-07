@@ -1,0 +1,10 @@
+= table.id
+= table.association :club, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.club) }
+= table.association :person, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.person) }
+= table.association :category, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.category) }
+= table.row :membership_state do |r|
+  - capture_haml do
+    %span.badge{ class: "badge-#{r.membership_state}"}= r.human_value_name(:membership_state)
+= table.timestamp :active_from
+= table.timestamp :active_to
+= table.timestamps

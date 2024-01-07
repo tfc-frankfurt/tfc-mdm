@@ -17,12 +17,13 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", ">= 6.1"
-  s.add_dependency "cmor_core"
-  s.add_dependency "cmor_core_backend"
-  s.add_dependency "tfc-mdm"
+  s.add_dependency "cmor-core-backend"
+  s.add_dependency "cmor-core"
   s.add_dependency "country_select"
+  s.add_dependency "tfc-mdm"
   s.add_dependency "twitter-bootstrap-components-rails", '>= 1.0.0'
 
+  s.add_development_dependency "bcrypt"
   s.add_development_dependency "capybara"
   s.add_development_dependency "capybara-select-2"
   s.add_development_dependency "factory_bot_rails"

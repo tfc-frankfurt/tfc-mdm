@@ -1,13 +1,31 @@
-= form.input :record, as: :polymorphic_association, classes: { Tfc::Mdm::Club => url_for([:autocomplete, Tfc::Mdm::Club]), Tfc::Mdm::Person => url_for([:autocomplete, Tfc::Mdm::Person]) }
+.row
+  .col-12.col-md-6
+    = form.input :record, as: :polymorphic_association, label_method: :human, classes: { Tfc::Mdm::Club => url_for([:autocomplete, Tfc::Mdm::Club]), Tfc::Mdm::Person => url_for([:autocomplete, Tfc::Mdm::Person]) }
+  .col-12.col-md-6
+    = form.association :role, label_method: ->(r) { r.human_value_name(:identifier) }
 
-= form.association :role, label_method: :identifier
+.row
+  .col-12.col-md-6
+    = form.input :valid_from, as: :string, as: :date_time_picker
+  .col-12.col-md-6
+    = form.input :valid_to, as: :string, as: :date_time_picker
 
-= form.input :valid_from, as: :string, input_html: { type: :date }
-= form.input :valid_to, as: :string, input_html: { type: :date }
+%hr
 
-= form.input :line1
-= form.input :line2
-= form.input :street
-= form.input :zipcode
-= form.input :city
-= form.input :country
+.row
+  .col-12
+    = form.input :line1
+  .col-12
+    = form.input :line2
+  .col-12
+    = form.input :street
+
+.row
+  .col-12.col-md-2
+    = form.input :zipcode
+  .col-12.col-md-10
+    = form.input :city
+
+.row
+  .col-12
+    = form.input :country

@@ -1,0 +1,2 @@
+= link_to(new_polymorphic_path([tfc_mdm_backend, Tfc::Mdm::Memberships::Event], memberships_event: { membership_id: @resource.id}), class: "btn btn-circle btn-lg btn-primary") do
+  %i.fa.fa-calendar-plus{ title: Tfc::Mdm::Memberships::Event.model_name.human }

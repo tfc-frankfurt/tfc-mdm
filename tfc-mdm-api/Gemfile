@@ -21,3 +21,7 @@ gem "rao-api-service_controller", path: "~/projects/gems/rao/rao-api-service_con
 gem "rao-query", path: "~/projects/gems/rao/rao-query"
 gem "simple_form-fake_inputs", git: "https://github.com/robotex82/simple_form-fake_inputs"
 gem "timeline_events", git: "https://github.com/robotex82/timeline_events"
+git "https://github.com/beegoodit/bgit-ruby" do
+  gem "bgit-invoicing"
+end
+gem "json_seeds-rails", git: "https://github.com/robotex82/json_seeds-rails"

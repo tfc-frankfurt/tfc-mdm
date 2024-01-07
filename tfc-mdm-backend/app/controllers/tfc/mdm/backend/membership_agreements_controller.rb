@@ -15,7 +15,7 @@ module Tfc
           end
 
           def permitted_params
-            params.require(:membership_agreement).permit(%i(club_id salutation firstname lastname street zipcode city country birthdate phone email entry_at))
+            params.require(:membership_agreement).permit(%i(club_id salutation firstname lastname street zipcode city country birthdate phone email entry_at person_id))
           end
 
           module PersonConcern

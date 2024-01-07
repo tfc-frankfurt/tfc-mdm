@@ -1,0 +1,29 @@
+.row
+  .col-12.mb-4
+    .tile-grid
+      = link_to(tfc_mdm_backend.new_polymorphic_path([Tfc::Mdm::MembershipAgreement]), class: "tile btn btn-success") do
+        %i.fas.fa-plus
+        %br
+        = Tfc::Mdm::MembershipAgreement.model_name.human
+
+      - if termination_event = Tfc::Mdm::Memberships::EventType.identified_by(:termination).first
+        = link_to(tfc_mdm_backend.new_polymorphic_path([Tfc::Mdm::Memberships::Event], memberships_event: { event_type_id: termination_event.id}), class: "tile btn btn-danger") do
+          %i.fas.fa-plus
+          %br
+          = Tfc::Mdm::Memberships::EventType.human_value_name(:identifier, :termination)
+:css
+  .tile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+  }
+  .tile-grid .tile {
+    aspect-ratio: 1;
+  }
+
+  .btn.tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

@@ -1,0 +1,10 @@
+= table.id
+= table.association :club, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.club) }
+= table.association :person, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.person) }
+= table.row :fullname
+= table.row :address
+= table.timestamp :birthdate
+= table.row :phone
+= table.email :email
+= table.timestamp :entry_at
+= table.timestamps

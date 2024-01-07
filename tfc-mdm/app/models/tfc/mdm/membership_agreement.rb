@@ -5,7 +5,7 @@ module Tfc
     class MembershipAgreement < ActiveRecord::Base
       belongs_to :club
       belongs_to :person, optional: true
-      has_one :membership_cancellation
+      has_one :membership_cancellation, inverse_of: :membership_agreement
 
       delegate :name, to: :club, prefix: true, allow_nil: true
 
@@ -25,12 +25,12 @@ module Tfc
         "#{salutation} #{firstname} #{lastname}"
       end
 
-      # def human
-      #   "[#{self.class.model_name.human}] #{club.human} - #{fullname}"
-      # end
+      def address
+        [street, "#{zipcode} #{city}", country].join(", ")
+      end
 
       def human
-        [club&.human, person&.human, entry_at].compact.join(" ")
+        [club&.human, person&.human, entry_at].compact.join(" - ")
       end
     end
   end

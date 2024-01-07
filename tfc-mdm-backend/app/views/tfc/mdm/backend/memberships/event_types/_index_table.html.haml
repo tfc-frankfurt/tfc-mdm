@@ -1,0 +1,5 @@
+= table.id sort: true
+= table.column :identifier, sort: true do |r|
+  - r.human_value_name(:identifier)
+= table.column :memberships_count
+= table.timestamps

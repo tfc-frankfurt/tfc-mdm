@@ -1,0 +1,8 @@
+%h3= Tfc::Mdm::Memberships::Event.model_name.human(count: :other)
+
+= collection_table(collection: resource.events.order(happened_at: :desc)) do |t|
+  = t.id
+  = t.association :event_type, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.event_type) }
+  = t.timestamp :happened_at
+  = t.timestamp :effective_at
+  = t.timestamps

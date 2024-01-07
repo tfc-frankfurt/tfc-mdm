@@ -3,8 +3,20 @@ gemspec
 
 gem "tfc-mdm", path: "../tfc-mdm"
 
-gem "cmor-translations", git: "https://github.com/content-management-on-rails/cmor-translations"
+git "https://github.com/content-management-on-rails/cmor-translations" do
+  gem "cmor-translations" # , path: "~/projects/gems/cmor-translations"
+end
 gem "rails-dummy", github: "robotex82/rails-dummy", branch: "feature/ruby-3-2-compatibility"
 gem "rails", ">= 7"
+
+git "https://github.com/content-management-on-rails/cmor", branch: "main" do
+  gem "cmor-core-settings"
+  gem "cmor-core-backend"
+  gem "cmor-core"
+  gem "cmor"
+end
+gem "bgit-invoicing", git: "https://github.com/beegoodit/bgit-ruby"
+gem "json_seeds-rails", git: "https://github.com/robotex82/json_seeds-rails"
 gem "simple_form-fake_inputs", git: "https://github.com/robotex82/simple_form-fake_inputs"
 gem "timeline_events", git: "https://github.com/robotex82/timeline_events"
+gem "country_select", git: "https://github.com/countries/country_select"

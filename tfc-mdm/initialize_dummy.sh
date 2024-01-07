@@ -36,9 +36,23 @@ echo "RouteTranslator.config do |config|" >> config/initializers/route_translato
 echo "  config.force_locale = true" >> config/initializers/route_translator.rb
 echo "end" >> config/initializers/route_translator.rb
 
+# Setup dummy app
+rails generate model User email password_digest active:boolean confirmed:boolean approved:boolean
+# add password confiirmation to user model
+sed -i '2i\  has_secure_password :password' app/models/user.rb
+# add current_user method to the application controller
+sed -i '2i\  def current_user; end' app/controllers/application_controller.rb
+
+# Setup cmor-core-settings
+rails generate cmor:core:settings:install
+rails cmor_core_settings:install:migrations
+
 # Setup cmor_translations
 rails cmor_translations:install:migrations
 
 # Setup tfc-mdm
 rails generate tfc:mdm:install
-rails tfc_mdm:install:migrations db:migrate db:test:prepare
+rails tfc_mdm:install:migrations
+
+# Setup database
+rails db:migrate db:test:prepare

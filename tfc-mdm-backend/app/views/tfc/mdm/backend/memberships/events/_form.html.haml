@@ -1,0 +1,14 @@
+.row
+  .col
+    = form.association(:membership,
+      label_method: ->(r) { [r.club.human, r.person.human, r.category.human_value_name(:identifier), humanized_money_with_symbol(r.category.current_fee.amount), r.human_value_name(:membership_state)].join(" - ") },
+      collection: Tfc::Mdm::Memberships::Membership.includes(:club, :person, :category).order("tfc_mdm_clubs.name ASC, tfc_mdm_people.firstname ASC, tfc_mdm_people.lastname ASC, tfc_mdm_memberships_categories.identifier ASC"))
+  .col
+    = form.association :event_type, label_method: :human
+
+.row
+  .col
+    = form.input :happened_at, as: :date_time_picker, side_by_side: true
+.row
+  .col
+    = form.input :description

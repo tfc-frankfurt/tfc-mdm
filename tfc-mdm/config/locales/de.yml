@@ -21,12 +21,12 @@ de:
         club: Verein
       tfc/mdm/club_membership_numbers:
         year: Jahr
-        membership_agreements: Eintritte
-        membership_agreements_count: Eintritte
-        membership_cancellations: Austritte
-        membership_cancellations_count: Austritte
-        active_members_at_start_of_year: Aktive am Jahreende
-        active_members_at_end_of_year: Aktive am Jahresanfang
+        agreements: Eintritte
+        agreements_count: Eintritte
+        terminations: Austritte
+        terminations_count: Austritte
+        active_members_at_start_of_year: Aktive am Jahresanfang
+        active_members_at_end_of_year: Aktive am Jahresende
         membership_development: Entwicklung
       tfc/mdm/create_club_from_establishment_service:
         addresses_address: Adresse
@@ -69,6 +69,21 @@ de:
       tfc/mdm/membership_cancellation:
         one: Austritt
         other: Austritte
+      tfc/mdm/memberships/category:
+        one: Kategorie
+        other: Kategorien
+      tfc/mdm/memberships/event:
+        one: Ereignis
+        other: Ereignisse
+      tfc/mdm/memberships/event_type:
+        one: Ereignis-Typ
+        other: Ereignis-Typen
+      tfc/mdm/memberships/fee:
+        one: Beitrag
+        other: Beiträge
+      tfc/mdm/memberships/membership:
+        one: Mitgliedschaft
+        other: Mitgliedschaften
       tfc/mdm/person:
         one: Person
         other: Personen
@@ -82,8 +97,20 @@ de:
         one: Amt
         other: Ämter
     attributes:
-      tfc/mdm/achievements/achievement:
+      shared: &shared
         id: ID
+        active_from: Gültig von
+        active_to: Gültig bis
+        amount: Betrag
+        amount_cents: Betrag (Cent)
+        description: Beschreibung
+        name: Name
+        happened_at: Zeitpunkt
+        identifier: Bezeichner
+        created_at: Erstellt am
+        updated_at: Aktualisiert am
+      tfc/mdm/achievements/achievement:
+        <<: *shared
         category: Kategorie
         category_id: Kategorie
         club: Verein
@@ -96,18 +123,14 @@ de:
         happened_at: Erzielt am
         published_at: Veröffentlicht am
         position: Position
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
       tfc/mdm/achievements/category:
-        id: ID
+        <<: *shared
         club: Verein
         club_id: Verein
         name_de: Name (DE)
         name_en: Name (EN)
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
       tfc/mdm/addresses/address:
-        id: ID
+        <<: *shared
         club_id: Verein
         club: Verein
         city: Ort
@@ -125,79 +148,66 @@ de:
         valid_from: Gültig von
         valid_to: Gültig bis
         zipcode: Postleitzahl
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
       tfc/mdm/addresses/role:
-        id: ID
+        <<: *shared
         club_id: Verein
         club: Verein
         identifier: Bezeichner
-        created_at: Erstellt am
-        updated_at:  Aktualisiert am
       tfc/mdm/branch:
-        id: ID
+        <<: *shared
         assets: Dateien
         club_id: Verein
         club: Verein
         current_addresses: Aktuelle Adressen
-        description: Beschreibung
-        identifier: Bezeichner
         images: Bilder
-        name: Name
         valid_from: Gültig von
         valid_to: Gültig bis
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
       tfc/mdm/club:
-        id: ID
+        <<: *shared
         active_members_count: Aktive Mitglieder
+        active_members_average_age: Durchschnittsalter aktiver Mitglieder
         current_address: Aktuelle Adresse
         established_at: Gegründet am
         establishment_id: Gründung
         establishment: Gründung
         logo: Logo
-        name: Name
         slug: Slug
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
       tfc/mdm/create_person_from_membership_agreement_service:
+        <<: *shared
         membership_agreement_id: Anmeldung
       tfc/mdm/establishment:
-        id: ID
+        <<: *shared
         club_id: Verein
         club: Verein
         country: Land
         happened_at: Zeitpunkt
-        name: Name
         logo: Logo
         line1: 1. Zeile
         line2: 2. Zeile
         street: Strasse
         zipcode: Postleitzahl
         city: Ort
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
       tfc/mdm/membership_agreement:
-        id: ID
-        club: Verein
+        <<: *shared
+        birthdate: Geburtsdatum
+        city: Ort
         club_id: Verein
+        club: Verein
         country: Land
+        email: E-Mail
         entry_at: Datum
-        person: Person
-        person_id: Person
-        salutation: Anrede
         firstname: Vorname
         lastname: Nachname
+        membership_type_id: Mitgliedschafts-Typ
+        membership_type: Mitgliedschafts-Typ
+        person_id: Person
+        person: Person
+        phone: Telefon
+        salutation: Anrede
         street: Strasse
         zipcode: Postleitzahl
-        city: Ort
-        birthdate: Geburtsdatum
-        phone: Telefon
-        email: E-Mail
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
       tfc/mdm/membership_cancellation:
-        id: ID
+        <<: *shared
         club: Verein
         club_id: Verein
         entry_at: Eintrag am
@@ -205,21 +215,48 @@ de:
         person_id: Person
         membership_agreement: Anmeldung
         membership_agreement_id: Anmeldung
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
-      tfc/mdm/person:
-        id: ID
+      tfc/mdm/memberships/category:
+        <<: *shared
         club_id: Verein
         club: Verein
+      tfc/mdm/memberships/event:
+        <<: *shared
+        effective_at: Wirksam zum
+        event_type_id: Ereignis-Typ
+        event_type: Ereignis-Typ
+        membership_id: Mitgliedschaft
+        membership: Mitgliedschaft
+      tfc/mdm/memberships/event_type:
+        <<: *shared
+        memberships_count: Mitgliedschaften
+      tfc/mdm/memberships/fee:
+        <<: *shared
+        category_id: Kategorie
+        category: Kategorie
+      tfc/mdm/memberships/membership:
+        <<: *shared
+        active: Aktiv
+        club_id: Verein
+        club: Verein
+        current_fee: Aktueller Beitrag
+        person_id: Person
+        person: Person
+        category_id: Kategorie
+        category: Kategorie
+        membership_state: Status
+      tfc/mdm/person:
+        <<: *shared
         age: Alter
-        salutation: Anrede
+        birthdate: Geburtsdatum
+        club_id: Verein
+        club: Verein
         firstname: Vorname
         lastname: Nachname
-        birthdate: Geburtsdatum
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
+        salutation: Anrede
+        user: Benutzer
+        user_id: Benutzer
       tfc/mdm/positions/entry:
-        id: ID
+        <<: *shared
         club_id: Verein
         club: Verein
         exit_id: Amtsabtritt
@@ -231,26 +268,38 @@ de:
         positionable: Amtsträger
         happened_at: Zeitpunkt
         email: E-Mail
-        description: Beschreibung
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
       tfc/mdm/positions/exit:
-        id: ID
+        <<: *shared
         club_id: Verein
         club: Verein
         entry_id: Amtsantritt
         happened_at: Zeitpunkt
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
       tfc/mdm/positions/position:
-        id: ID
+        <<: *shared
         club_id: Verein
         club: Verein
         name_de: Name (Deutsch)
         name_en: Name (English)
-        name: Name
-        created_at: Erstellt am
-        updated_at: Aktualisiert am
+    values:
+      tfc/mdm/addresses/role:
+        identifier:
+          primary_address: Hauptadresse
+      tfc/mdm/memberships/category:
+        identifier:
+          active: Aktive Mitgliedschaft
+          passive: Passive Mitgliedschaft
+      tfc/mdm/memberships/event_type:
+        identifier:
+          agreement:
+            one: Beitritt
+            other: Beitritte
+          termination:
+            one: Austritt
+            other: Austritte
+      tfc/mdm/memberships/membership:
+        membership_state:
+          agreement: aktiv
+          termination: ausgetreten
   classes:
     tfc/mdm/club_established: Gründung
     tfc/mdm/create_club_from_establishment_service: Dienst zur Erstellung von Vereinen aus Gründungen
@@ -264,8 +313,9 @@ de:
         addressable_table_columns:
           new_address: Adresse hinzufügen
   routes:
-    tfc_mdm_engine: 'vereine'
-    branches: 'locations'
+    tfc_mdm_engine: "vereine"
+    branches: "locations"
+    memberships: "mitgliedschaften"
   tfc:
     mdm:
       application_view_helper:
@@ -274,17 +324,22 @@ de:
       achievements:
         achievements:
           index:
-            back: 'Zurück'
+            back: "Zurück"
             title: "%{collection_name}"
           show:
-            back: 'Zurück'
+            back: "Zurück"
       branches:
         index:
-          back: 'Zurück'
+          back: "Zurück"
           title: "%{collection_name}"
       clubs:
         show:
-          back: 'Zurück'
+          back: "Zurück"
+      memberships:
+        memberships:
+          show:
+            back: "Zurück"
+            title: "Deine Mitgliedschaft"
       notification_mailer:
         new_membership_agreement_email:
           subject: "[%{club_name}] Neuanmeldung zum %{membership_agreement_entry_at}: %{member_fullname}"

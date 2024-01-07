@@ -42,10 +42,10 @@ module Tfc
 
         private
 
-          def set_validity_defaults
-            self.valid_from = "01.01.1900 00:00:00"
-            self.valid_to   = "31.12.9999 23:59:59"
-          end
+        def set_validity_defaults
+          self.valid_from = "01.01.1900 00:00:00"
+          self.valid_to   = "31.12.9999 23:59:59"
+        end
       end
 
       include ValidityConcern

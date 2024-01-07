@@ -1,0 +1,8 @@
+= table.id sort: true
+= table.association :club, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.club) }
+= table.association :category, label_method: -> (r) { r.human_value_name(:identifier) }, link_to: ->(r) { tfc_mdm_backend.url_for(r.category) }, sort: { column_name: "tfc_mdm_memberships_categories.identifier" }
+= table.money :amount, sort: true
+= table.timestamp :active_from, sort: true
+= table.timestamp :active_to, sort: true
+= table.boolean :active
+= table.timestamps

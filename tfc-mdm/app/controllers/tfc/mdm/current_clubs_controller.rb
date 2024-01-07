@@ -16,9 +16,9 @@ module Tfc
 
       private
 
-        def load_resource
-          @resource = current_club
-        end
+      def load_resource
+        @resource = current_club
+      end
     end
   end
 end

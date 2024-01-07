@@ -5,7 +5,7 @@ module Tfc
     class MembershipCancellation < ActiveRecord::Base
       belongs_to :club
       belongs_to :person
-      belongs_to :membership_agreement
+      belongs_to :membership_agreement, inverse_of: :membership_cancellation
 
       before_validation :set_person
       before_validation :set_club
@@ -13,6 +13,8 @@ module Tfc
       scope :happened_in_year, ->(year) { happened_after(year.beginning_of_year).happened_before(year.end_of_year) }
       scope :happened_before, ->(point_in_time) { where("tfc_mdm_membership_cancellations.entry_at < ?", point_in_time) }
       scope :happened_after, ->(point_in_time) { where("tfc_mdm_membership_cancellations.entry_at > ?", point_in_time) }
+
+      validates :entry_at, presence: true
 
       def to_event
         MembershipCancellationSigned.new(membership_cancellation: self, happened_at: entry_at, color: "#f8d7da")

@@ -1,0 +1,20 @@
+.row
+  .col
+    %h3= "#{Tfc::Mdm::Memberships::Membership.model_name.human(count: :other)} (#{resource.memberships.count})"
+
+.row
+  .col
+    = collection_table(collection: resource.memberships) do |table|
+      = table.id
+      = table.association :club, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.club) }
+      = table.association :person, label_method: :human, link_to: ->(r) { tfc_mdm_backend.url_for(r.person) }
+      = table.association :category, label_method: ->(r) { "#{r.human_value_name(:identifier)} (#{humanized_money_with_symbol(r.current_fee.amount)})"}, link_to: ->(r) { tfc_mdm_backend.url_for(r.category) }
+      = table.timestamp :active_from
+      = table.timestamp :active_to
+      = table.association :events do |r|
+        - capture_haml do
+          - r.events.each do |associated|
+            %span.badge.badge-primary
+              = link_to(new_polymorphic_path(associated), class: "text-white") do
+                = associated.human
+      = render partial: "administrador/resources_controller/base/index_table_actions", locals: { table: table }

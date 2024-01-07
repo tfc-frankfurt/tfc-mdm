@@ -1,0 +1,3 @@
+table td:last-of-type, thead th:last-of-type {
+  text-align: right;
+}

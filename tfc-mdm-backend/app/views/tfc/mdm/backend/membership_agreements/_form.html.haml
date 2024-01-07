@@ -11,3 +11,5 @@
 = form.input :email
 = form.input :entry_at, as: :string, input_html: { type: :date }
 = form.input :call_create_person_from_membership_agreement_service, as: :fake_checkbox
+- if form.object.club.present?
+  = form.association :person, collection: form.object.club.people.order(:firstname, :lastname), label_method: :human

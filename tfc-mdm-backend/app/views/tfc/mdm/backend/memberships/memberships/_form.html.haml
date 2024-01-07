@@ -1,0 +1,16 @@
+.row
+  .col
+    = form.association :club, label_method: :human
+  .col
+    = form.association :category, label_method: :human
+
+.row
+  .col
+    = form.input :active_from, as: :date_time_picker
+  .col
+    = form.input :active_to, as: :date_time_picker
+
+
+.row
+  .col
+    = form.association :person, label_method: :human
