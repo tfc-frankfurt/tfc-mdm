@@ -20,6 +20,8 @@ require "tfc/mdm/version"
 
 module Tfc
   module Mdm
-    extend Configuration
+    def self.configure
+      yield Configuration
+    end
   end
 end
