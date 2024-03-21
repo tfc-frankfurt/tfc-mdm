@@ -34,7 +34,7 @@ RSpec.describe "/de/backend/vereinsstammdaten/memberships/memberships", type: :f
 
   # Update
   it do
-    point_in_time = 1.day.from_now
+    point_in_time = 1.day.from_now.change(usec: 0)
     expect(subject).to implement_update_action(self)
       .for(resource)
       .within_form(".edit_memberships_membership") {
