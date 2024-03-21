@@ -50,6 +50,10 @@ rails cmor_core_settings:install:migrations
 # Setup cmor_translations
 rails cmor_translations:install:migrations
 
+# Setup bgit-invoicing
+rails generate bgit:invoicing:install
+rails bgit_invoicing:install:migrations
+
 # Setup tfc-mdm
 rails generate tfc:mdm:install
 rails tfc_mdm:install:migrations

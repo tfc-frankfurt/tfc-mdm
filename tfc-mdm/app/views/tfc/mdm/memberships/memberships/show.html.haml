@@ -22,6 +22,19 @@
         = table.association :event_type, label_method: :human
         = table.timestamp :happened_at
 
+  .row
+    .col-12
+      %h3= Bgit::Invoicing::Invoice.model_name.human(count: :other)
+    .col-12
+      = collection_table(collection: Bgit::Invoicing::Invoice.where(owner: @resource)) do |table|
+        = table.column :uuid
+        = table.timestamp :shipping_date
+        = table.timestamp :shipping_end_date
+        = table.money :total_net_amount
+        = table.aasm_state :billing
+        = table.timestamps
+
+
 .row
   .col
     = link_to({ action: :index }, class: 'btn btn-primary btn-sm') do

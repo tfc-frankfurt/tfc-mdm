@@ -86,7 +86,7 @@ module Tfc
         def build_invoice_for_membership(membership)
           say "Building invoice for #{membership.human}" do
             Bgit::Invoicing::Invoice.new(
-              owner: membership.person,
+              owner: membership.membership,
               shipping_date: [membership.active_from, year_as_time.beginning_of_year].max,
               shipping_end_date: [membership.active_to, year_as_time.end_of_year].min
             )

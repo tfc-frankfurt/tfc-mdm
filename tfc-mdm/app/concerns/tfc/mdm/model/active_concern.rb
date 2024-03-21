@@ -13,6 +13,10 @@ module Tfc
             t = arel_table
             where(t[:active_from].lteq(point_in_time)).where(t[:active_to].gteq(point_in_time))
           }
+          scope :active_in, ->(range) {
+            t = arel_table
+            where(t[:active_from].lteq(range.end)).where(t[:active_to].gteq(range.begin))
+          }
 
           after_initialize do
             self.active_from ||= Time.at(0)
