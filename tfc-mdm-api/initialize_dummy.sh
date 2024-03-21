@@ -43,6 +43,9 @@ touch config/initializers/i18n.rb
 echo "Rails.application.config.i18n.available_locales = [:en, :de]" >> config/initializers/i18n.rb
 echo "Rails.application.config.i18n.default_locale    = :de" >> config/initializers/i18n.rb
 
+# Setup dummy app
+rails generate model User email password_digest active:boolean confirmed:boolean approved:boolean
+
 # Setup cmor-core-settings
 rails generate cmor:core:settings:install
 rails cmor_core_settings:install:migrations

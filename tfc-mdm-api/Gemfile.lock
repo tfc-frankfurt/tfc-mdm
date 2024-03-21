@@ -112,21 +112,21 @@ GIT
 PATH
   remote: ../../rao/rao-api-resources_controller
   specs:
-    rao-api-resources_controller (0.0.51.pre)
+    rao-api-resources_controller (0.0.52.pre)
       rails (>= 6.1)
       rao
 
 PATH
   remote: ../../rao/rao-api-service_controller
   specs:
-    rao-api-service_controller (0.0.51.pre)
+    rao-api-service_controller (0.0.52.pre)
       rails (>= 6.1)
       rao
 
 PATH
   remote: ../../rao/rao-query
   specs:
-    rao-query (0.0.51.pre)
+    rao-query (0.0.52.pre)
       rails (>= 6.1)
       rao
       rao-view_helper
@@ -145,7 +145,7 @@ PATH
       money-rails
       rails (>= 6.1)
       rao-active_collection
-      rao-component
+      rao-component (>= 0.0.52.pre)
       rao-resources_controller
       rao-service
       route_translator
@@ -452,7 +452,7 @@ GEM
     rao-active_collection (0.0.51.pre)
       rails (>= 6.1)
       rao
-    rao-component (0.0.49.pre)
+    rao-component (0.0.52.pre)
       haml-rails
       rails (>= 6.1)
       rao
