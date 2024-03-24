@@ -6,6 +6,9 @@ module Tfc::Mdm
       it { expect(subject).to belong_to(:club) }
       it { expect(subject).to belong_to(:person) }
       it { expect(subject).to belong_to(:category) }
+      it { expect(subject).to have_many(:billed_items) }
+      it { expect(subject).to have_many(:line_items) }
+      it { expect(subject).to have_many(:invoices) }
     end
 
     describe "validations" do

@@ -13,6 +13,9 @@ de:
       tfc/mdm/create_person_from_membership_agreement_service:
         one: Dienst zur Extraktion von Personendaten aus Beitritten
         other: Dienste zur Extraktion von Personendaten aus Beitritten
+      tfc/mdm/memberships/billing_run_service:
+        one: Dienst zur Abrechnung von Mitgliedsbeiträgen
+        other: Dienste zur Abrechnung von Mitgliedsbeiträgen
       tfc/mdm/notify_about_new_membership_agreement_service:
         one: Dienst zur Benachrichtigung über neue Beitritte
         other: Dienste zur Benachrichtigung über neue Beitritte
@@ -239,8 +242,11 @@ de:
         club_id: Verein
         club: Verein
         current_fee: Aktueller Beitrag
+        events: Ereignisse
+        full_months_active_in_year: Vollständige Monate im Jahr
         person_id: Person
         person: Person
+        total_fee_for_year: Mitgliedsbeitrag im Jahr
         category_id: Kategorie
         category: Kategorie
         membership_state: Status

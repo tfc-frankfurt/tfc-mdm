@@ -28,7 +28,7 @@ module Tfc
           when Array
             @memberships = value.map { |m| Tfc::Mdm::Memberships::BillingRunService::Membership.new(membership: m) }
           when Hash
-            value.collect do |membership_id, attributes|
+            @memberships = value.collect do |membership_id, attributes|
               next unless ActiveRecord::Type::Boolean.new.cast(attributes.delete(:selected))
               membership = Tfc::Mdm::Memberships::Membership.find(membership_id)
               Tfc::Mdm::Memberships::BillingRunService::Membership.new(attributes.merge(membership: membership))
@@ -39,12 +39,25 @@ module Tfc
         end
 
         def memberships
-          # club.memberships.includes(:person, category: [:current_fee, :fees], events: [:event_type]).order(active_from: :desc).group_by(&:club)
-          @memberships ||= Tfc::Mdm::Memberships::Membership
+          @memberships ||= unbilled_memberships
+        end
+
+        def unbilled_memberships
+          unbilled_memberships = Tfc::Mdm::Memberships::Membership
             .active_in(year_as_time.beginning_of_year..year_as_time.end_of_year)
             .includes(:person, category: [:current_fee, :fees], events: [:event_type])
             .order(active_from: :desc)
             .all.map { |m| Tfc::Mdm::Memberships::BillingRunService::Membership.new(membership: m) }
+
+            unbilled_memberships.select do |m|
+              invoices = m.invoices.for_year(year)
+              return true if invoices.empty?
+
+              # get shipping date ranges from all invoices
+              shipping_date_ranges = invoices.map { |i| i.shipping_date..i.shipping_end_date }
+              # check if the membership has any days outside of the shipping date ranges
+              m.days_active_in_year(year).any? { |d| shipping_date_ranges.none? { |r| r.cover?(d) } }
+            end
         end
 
         def year
@@ -58,7 +71,6 @@ module Tfc
         def total_membership_fee_cents
           @total_membership_fee_cents ||= memberships.sum { |m| m.total_fee_for_year_cents(year) }
         end
-
 
         private
 
@@ -112,4 +124,3 @@ module Tfc
     end
   end
 end
-

@@ -11,7 +11,7 @@ module Tfc
         validates :selected, inclusion: {in: [true, false]}
 
         delegate *Tfc::Mdm::Memberships::Membership.attribute_names, to: :membership
-        delegate :human, :full_months_active_in_year, :total_fee_for_year, :total_fee_for_year_cents, :person, :category, :events, to: :membership
+        delegate :days_active_in_year, :human, :full_months_active_in_year, :total_fee_for_year, :total_fee_for_year_cents, :person, :category, :events, :invoices, to: :membership
       end
     end
   end
