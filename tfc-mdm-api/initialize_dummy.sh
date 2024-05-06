@@ -28,15 +28,9 @@ sed -i '17i\require "sprockets/rails"' config/application.rb
 rails active_storage:install
 
 # Setup ActiveRecord encryption
-ARE_CONF=$(cat <<-END
-active_record_encryption:
-  primary_key: L65Ufyp4rGhy6Ljey0FURgzTxMfz5bmf
-  deterministic_key: Wgxp51Q5mVF8zPjeCMx34Ve5FI5cA9WA
-  key_derivation_salt: V0uzZUabwzurOw8HZmJbPC6XAFMGmedv
-END
-)
-
-EDITOR="echo \"$ARE_CONF\" >> " rails credentials:edit
+sed -i '/end/i\  config.active_record.encryption.primary_key = "test"' config/environments/test.rb
+sed -i '/end/i\  config.active_record.encryption.deterministic_key = "test"' config/environments/test.rb
+sed -i '/end/i\  config.active_record.encryption.key_derivation_salt = "test"' config/environments/test.rb
 
 # Setup i18n
 touch config/initializers/i18n.rb

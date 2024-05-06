@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "webpacker"
   spec.add_development_dependency "guard-rspec"
   spec.add_development_dependency "guard-bundler"
-  spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency "pry-rails"
+  spec.add_development_dependency "sqlite3", "~> 1.4"
   spec.add_development_dependency "sprockets-rails"
 end

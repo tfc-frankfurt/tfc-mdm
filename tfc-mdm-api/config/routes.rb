@@ -4,10 +4,6 @@ Tfc::Mdm::Api::Engine.routes.draw do
   resources :notify_about_new_membership_agreement_service, only: [:new, :create]
 
   resources :establishments
-  resources :branches
-  resources :clubs do
-    get :autocomplete, on: :collection
-  end
   resources :membership_agreements
   resources :membership_cancellations
   resources :people do
@@ -25,6 +21,13 @@ Tfc::Mdm::Api::Engine.routes.draw do
     resources :achievements do
       post :reposition, on: :member
       post :toggle_published, on: :member
+    end
+  end
+
+  namespace :clubs do
+    resources :branches
+    resources :clubs do
+      get :autocomplete, on: :collection
     end
   end
 

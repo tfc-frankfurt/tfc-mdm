@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe '/api/tfc-mdm/clubs', type: :request do
-  let(:base_path) { '/api/tfc-mdm/clubs' }
+RSpec.describe '/api/tfc-mdm/clubs/clubs', type: :request do
+  let(:base_path) { '/api/tfc-mdm/clubs/clubs' }
   
   describe 'GET index' do
     let(:index_path) { base_path }
