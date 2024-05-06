@@ -5,7 +5,7 @@ RSpec.describe "/de/backend/vereinsstammdaten/memberships/categories", type: :fe
   let(:resource) { create(:tfc_mdm_memberships_category) }
   let(:resources) { create_list(:tfc_mdm_memberships_category, 3) }
 
-  let(:club) { create(:tfc_mdm_club) }
+  let(:club) { create(:tfc_mdm_clubs_club) }
 
   # List
   it { resources; expect(subject).to implement_index_action(self) }

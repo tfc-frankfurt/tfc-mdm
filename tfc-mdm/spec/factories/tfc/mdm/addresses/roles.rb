@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :tfc_mdm_addresses_role, class: 'Tfc::Mdm::Addresses::Role' do
-    association(:club, factory: :tfc_mdm_club)
+    association(:club, factory: :tfc_mdm_clubs_club)
     sequence(:identifier) { |i| "role_#{i}" }
   end
 end

@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails", ">= 6.1"
+  s.add_dependency "rails", "~> 7.0"
   s.add_dependency "cmor-core-backend"
   s.add_dependency "cmor-core"
   s.add_dependency "country_select"
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "guard-rspec"
   s.add_development_dependency "guard-bundler"
   s.add_development_dependency "pry-rails"
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "sqlite3", "~> 1.4"
   s.add_development_dependency "selenium-webdriver"
   s.add_development_dependency "puma"
   s.add_development_dependency "sprockets-rails"

@@ -3,7 +3,7 @@
 module Tfc
   module Mdm
     class MembershipAgreement < ActiveRecord::Base
-      belongs_to :club
+      belongs_to :club, class_name: "Tfc::Mdm::Clubs::Club"
       belongs_to :person, optional: true
       has_one :membership_cancellation, inverse_of: :membership_agreement
 

@@ -3,7 +3,7 @@ module Tfc::Mdm
     include Tfc::Mdm::Model::ActiveConcern
 
     belongs_to :category
-    has_one :club, through: :category, class_name: "Tfc::Mdm::Club"
+    has_one :club, through: :category, class_name: "Tfc::Mdm::Clubs::Club"
 
     scope :for_month, ->(month) { where("active_from <= ? AND active_to >= ?", month.end_of_month, month.beginning_of_month) }
 

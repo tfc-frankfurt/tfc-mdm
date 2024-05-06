@@ -15,5 +15,13 @@ module Tfc::Mdm
       it { expect(subject).to validate_presence_of(:active_from) }
       it { expect(subject).to validate_presence_of(:active_to) }
     end
+
+    describe "membership number" do
+      subject { create(:tfc_mdm_memberships_membership) }
+
+      before(:each) { Tfc::Mdm::NumberRanges::SeedService.call! }
+
+      it { expect(subject.membership_number).to eq("MG-00001") }
+    end
   end
 end

@@ -7,7 +7,7 @@ RSpec.describe "/de/backend/vereinsstammdaten/positions/entries", type: :feature
   let(:resource) { create(:tfc_mdm_positions_entry) }
   let(:resources) { create_list(:tfc_mdm_positions_entry, 3) }
 
-  let(:tfc_mdm_club) { create(:tfc_mdm_club) }
+  let(:tfc_mdm_club) { create(:tfc_mdm_clubs_club) }
   let(:tfc_mdm_positions_position) { create(:tfc_mdm_positions_position, club: tfc_mdm_club) }
   let(:tfc_mdm_person) { create(:tfc_mdm_person) }
 

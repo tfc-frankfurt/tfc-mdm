@@ -7,5 +7,6 @@ de:
     mdm:
       backend:
         clubs:
-          event_timeline:
-            title: "Timeline"
+          clubs:
+            event_timeline:
+              title: "Timeline"

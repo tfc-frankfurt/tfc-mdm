@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Tfc::Mdm::Memberships::BillingRunService, type: :service do
   describe "basic usage" do
-    let(:tfc_mdm_club) { create(:tfc_mdm_club) }
+    let(:tfc_mdm_club) { create(:tfc_mdm_clubs_club) }
     let(:memberships) { create_list(:tfc_mdm_memberships_membership, 3, club: tfc_mdm_club) }
     let(:attributes) { { club: tfc_mdm_club, memberships: memberships } }
     let(:options) { {} }

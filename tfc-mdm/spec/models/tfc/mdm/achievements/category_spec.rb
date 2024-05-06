@@ -1,7 +1,11 @@
 require 'rails_helper'
 
-module Tfc::Mdm
-  RSpec.describe Achievements::Category, type: :model do
-    pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Tfc::Mdm::Achievements::Category, type: :model do
+  describe "associations" do
+    it { expect(subject).to belong_to(:club) }
+    it { expect(subject).to have_many(:achievements) }
+  end
+
+  describe "validations" do
   end
 end

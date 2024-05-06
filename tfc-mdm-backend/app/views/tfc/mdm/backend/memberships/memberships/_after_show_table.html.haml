@@ -6,3 +6,15 @@
   = t.timestamp :happened_at
   = t.timestamp :effective_at
   = t.timestamps
+  = t.column :actions do |resource|
+    - capture_haml do
+      .btn-group
+        = link_to([tfc_mdm_backend, resource], class: 'btn btn-primary btn-xs') do
+          %i.fa.fa-eye
+          = t('.show')
+        = link_to([tfc_mdm_backend, :edit, resource], class: 'btn btn-secondary btn-xs') do
+          %i.fa.fa-pen
+          = t('.edit')
+        = link_to([tfc_mdm_backend, resource], class: 'btn btn-danger btn-xs', method: :delete, 'data-confirm': I18n.t('administrador.controller.confirmations.destroy')) do
+          %i.fa.fa-fire
+          = t('.destroy')

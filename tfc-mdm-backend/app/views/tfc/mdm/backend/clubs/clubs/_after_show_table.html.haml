@@ -1,0 +1,12 @@
+- resource.addresses.each do |address|
+  .row
+    .col-12
+      .card.mb-4
+        .card-header
+          %i.fas.fa-envelope
+          = address.role.human
+        .card-body
+          = address.oneline
+
+= render "membership_numbers", resource: @resource
+= render "event_timeline", resource: @resource

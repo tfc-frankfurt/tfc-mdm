@@ -24,7 +24,7 @@ RSpec.describe Tfc::Mdm::CreateClubFromEstablishmentService, type: :service do
 
     describe "persistence changes" do
       before(:each) { subject }
-      it { expect { subject.perform }.to change { Tfc::Mdm::Club.count }.by(1) }
+      it { expect { subject.perform }.to change { Tfc::Mdm::Clubs::Club.count }.by(1) }
       it { expect { subject.perform }.to change { Tfc::Mdm::Addresses::Address.count }.by(1) }
       it { expect { subject.perform }.to change { Tfc::Mdm::Addresses::Role.count }.by(1) }
       it { expect { subject.perform }.to change { ActiveStorage::Attachment.count }.by(1) }

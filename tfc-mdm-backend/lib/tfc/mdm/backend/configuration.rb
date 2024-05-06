@@ -8,6 +8,10 @@ module Tfc
           yield self
         end
 
+        def cmor
+          Cmor
+        end
+
         mattr_accessor :registered_controllers do
           lambda do
             [
@@ -25,7 +29,11 @@ module Tfc
               Tfc::Mdm::Backend::Memberships::EventsController,
               Tfc::Mdm::Backend::Memberships::EventTypesController,
               Tfc::Mdm::Backend::Memberships::FeesController,
-              Tfc::Mdm::Backend::Memberships::MembershipsController
+              Tfc::Mdm::Backend::Memberships::MembershipsController,
+              Tfc::Mdm::Backend::Clubs::BankDetailsController,
+              Tfc::Mdm::Backend::Clubs::EmailAddressesController,
+              Tfc::Mdm::Backend::Clubs::PhoneNumbersController,
+              Tfc::Mdm::Backend::Clubs::SocialMediaController
             ]
           end
         end

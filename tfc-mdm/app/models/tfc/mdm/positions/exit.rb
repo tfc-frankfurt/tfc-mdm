@@ -1,6 +1,6 @@
 module Tfc::Mdm
   class Positions::Exit < ApplicationRecord
-    belongs_to :club
+    belongs_to :club, class_name: "Tfc::Mdm::Clubs::Club"
     belongs_to :entry
 
     validates :happened_at, presence: true

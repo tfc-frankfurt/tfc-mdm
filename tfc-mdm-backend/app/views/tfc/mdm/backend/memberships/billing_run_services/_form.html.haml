@@ -5,7 +5,7 @@
   .card-body
     .row
       .col
-        = form.input :club_id, as: :select, collection: Tfc::Mdm::Club.all, include_blank: true
+        = form.input :club_id, as: :select, collection: Tfc::Mdm::Clubs::Club.all, include_blank: true
       .col
         = form.input :year, as: :select, collection: (Tfc::Mdm::Establishment.order(happened_at: :asc).pluck(:happened_at).first.year..Time.zone.now.year).to_a.reverse, include_blank: true
 

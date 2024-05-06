@@ -24,7 +24,7 @@ module Tfc
           end
 
           def permitted_params
-            params.fetch(:memberships_event, {}).permit(:event_type_id, :membership_id, :happened_at, :description)
+            params.fetch(:memberships_event, {}).permit(:event_type_id, :membership_id, :effective_at, :happened_at, :description)
           end
         end
       end

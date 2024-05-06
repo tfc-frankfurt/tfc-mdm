@@ -8,7 +8,7 @@ module Tfc
           attr_accessor :invoices
         end
 
-        attr_accessor :memberships, :year, :club, :club_id
+        attr_accessor :memberships, :year, :club, :club_id, :invoice_date
 
         validates :memberships, presence: true
         validates :year, presence: true
@@ -20,7 +20,7 @@ module Tfc
         monetize :total_membership_fee_cents, numericality: { greater_than_or_equal_to: 0 }
 
         def club
-          @club ||= Tfc::Mdm::Club.find_by(id: club_id)
+          @club ||= Tfc::Mdm::Clubs::Club.find_by(id: club_id)
         end
 
         def memberships=(value)
@@ -49,15 +49,15 @@ module Tfc
             .order(active_from: :desc)
             .all.map { |m| Tfc::Mdm::Memberships::BillingRunService::Membership.new(membership: m) }
 
-            unbilled_memberships.select do |m|
-              invoices = m.invoices.for_year(year)
-              return true if invoices.empty?
+          unbilled_memberships.select do |m|
+            invoices = m.invoices.for_year(year)
+            next true if invoices.empty?
 
-              # get shipping date ranges from all invoices
-              shipping_date_ranges = invoices.map { |i| i.shipping_date..i.shipping_end_date }
-              # check if the membership has any days outside of the shipping date ranges
-              m.days_active_in_year(year).any? { |d| shipping_date_ranges.none? { |r| r.cover?(d) } }
-            end
+            # get shipping date ranges from all invoices
+            shipping_date_ranges = invoices.map { |i| i.shipping_date..i.shipping_end_date }
+            # check if the membership has any days outside of the shipping date ranges
+            next m.days_active_in_year(year).any? { |d| shipping_date_ranges.none? { |r| r.cover?(d) } }
+          end
         end
 
         def year
@@ -70,6 +70,10 @@ module Tfc
 
         def total_membership_fee_cents
           @total_membership_fee_cents ||= memberships.sum { |m| m.total_fee_for_year_cents(year) }
+        end
+
+        def invoice_date
+          @invoice_date ||= Time.zone.now.to_date
         end
 
         private
@@ -99,9 +103,13 @@ module Tfc
           say "Building invoice for #{membership.human}" do
             Bgit::Invoicing::Invoice.new(
               owner: membership.membership,
-              shipping_date: [membership.active_from, year_as_time.beginning_of_year].max,
-              shipping_end_date: [membership.active_to, year_as_time.end_of_year].min
-            )
+              invoice_date: invoice_date,
+              shipping_date: [(membership.active_from + 1.month).beginning_of_month, year_as_time.beginning_of_year].max,
+              shipping_end_date: [(membership.active_to - 1.month).end_of_month, year_as_time.end_of_year].min
+            ).tap do |invoice|
+              invoice.set_invoice_number
+              binding.pry if invoice.invalid?
+            end
           end
         end
   

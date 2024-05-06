@@ -2,6 +2,7 @@
 = table.association :club, label_method: :human, sort: true, link_to: ->(r) { tfc_mdm_backend.url_for(r.club) }
 = table.association :person, label_method: :human, sort: true, link_to: ->(r) { tfc_mdm_backend.url_for(r.person) }
 = table.association :category, label_method: :human, sort: true, link_to: ->(r) { tfc_mdm_backend.url_for(r.category) }
+= table.field :membership_number, sort: true
 = table.timestamp :active_from, sort: true
 = table.timestamp :active_to, sort: true
 = table.boolean :active do |r|

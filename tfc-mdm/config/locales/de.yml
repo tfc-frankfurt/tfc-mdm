@@ -57,12 +57,24 @@ de:
       tfc/mdm/addresses/role:
         one: Rolle
         other: Rollen
-      tfc/mdm/branch:
+      tfc/mdm/clubs/bank_detail:
+        one: Bankverbindung
+        other: Bankverbindungen
+      tfc/mdm/clubs/branch:
         one: Location
         other: Locations
-      tfc/mdm/club:
+      tfc/mdm/clubs/club:
         one: Verein
         other: Vereine
+      tfc/mdm/clubs/email_address:
+        one: E-Mail-Adresse
+        other: E-Mail-Adressen
+      tfc/mdm/clubs/phone_number:
+        one: Telefonnummer
+        other: Telefonnummern
+      tfc/mdm/clubs/social_medium:
+        one: Social Medium
+        other: Social Media
       tfc/mdm/establishment:
         one: Gründung
         other: Gründungen
@@ -87,6 +99,9 @@ de:
       tfc/mdm/memberships/membership:
         one: Mitgliedschaft
         other: Mitgliedschaften
+      tfc/mdm/number_range:
+        one: Nummernkreis
+        other: Nummernkreise
       tfc/mdm/person:
         one: Person
         other: Personen
@@ -110,6 +125,7 @@ de:
         name: Name
         happened_at: Zeitpunkt
         identifier: Bezeichner
+        uuid: UUID
         created_at: Erstellt am
         updated_at: Aktualisiert am
       tfc/mdm/achievements/achievement:
@@ -156,7 +172,17 @@ de:
         club_id: Verein
         club: Verein
         identifier: Bezeichner
-      tfc/mdm/branch:
+      tfc/mdm/clubs/bank_detail:
+        <<: *shared
+        account_holder: Kontoinhaber
+        bank_name: Bank
+        bic: BIC
+        club_id: Verein
+        club: Verein
+        iban: IBAN
+        note: Notiz
+        role: Rolle
+      tfc/mdm/clubs/branch:
         <<: *shared
         assets: Dateien
         club_id: Verein
@@ -165,7 +191,7 @@ de:
         images: Bilder
         valid_from: Gültig von
         valid_to: Gültig bis
-      tfc/mdm/club:
+      tfc/mdm/clubs/club:
         <<: *shared
         active_members_count: Aktive Mitglieder
         active_members_average_age: Durchschnittsalter aktiver Mitglieder
@@ -175,6 +201,28 @@ de:
         establishment: Gründung
         logo: Logo
         slug: Slug
+        tax_number: Steuernummer
+        vat_identifier: USt-ID
+      tfc/mdm/clubs/email_address:
+        <<: *shared
+        club_id: Verein
+        club: Verein
+        email: E-Mail
+        role: Rolle
+      tfc/mdm/clubs/phone_number:
+        <<: *shared
+        club_id: Verein
+        club: Verein
+        number: Telefon
+        role: Rolle
+      tfc/mdm/clubs/social_medium:
+        <<: *shared
+        club_id: Verein
+        club: Verein
+        handle: Handle
+        platform: Plattform
+        role: Rolle
+        url: URL
       tfc/mdm/create_person_from_membership_agreement_service:
         <<: *shared
         membership_agreement_id: Anmeldung
@@ -250,6 +298,13 @@ de:
         category_id: Kategorie
         category: Kategorie
         membership_state: Status
+        membership_number: Mitgliedsnummer
+      tfc/mdm/number_range:
+        <<: *shared
+        format: "Format"
+        minimum_length: "Mindestlänge"
+        next_value: "Nächster Wert"
+        prefix: "Präfix"
       tfc/mdm/person:
         <<: *shared
         age: Alter
@@ -319,9 +374,10 @@ de:
         addressable_table_columns:
           new_address: Adresse hinzufügen
   routes:
-    tfc_mdm_engine: "vereine"
     branches: "locations"
+    clubs: "vereine"
     memberships: "mitgliedschaften"
+    tfc_mdm_engine: "vereine"
   tfc:
     mdm:
       application_view_helper:

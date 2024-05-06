@@ -53,7 +53,7 @@ module Tfc
       end
 
       def build_club
-        Club.new.tap do |c|
+        Tfc::Mdm::Clubs::Club.new.tap do |c|
           c.establishment = @establishment
           c.name = @establishment.name
           if @establishment.logo.attached?

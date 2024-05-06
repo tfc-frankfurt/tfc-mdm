@@ -3,7 +3,7 @@
 module Tfc
   module Mdm
     class Establishment < ActiveRecord::Base
-      has_one :club
+      has_one :club, class_name: "Tfc::Mdm::Clubs::Club"
 
       validates :name, presence: true
       validates :happened_at, presence: true

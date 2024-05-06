@@ -1,0 +1,10 @@
+= table.thumbnail :logo
+= table.thumbnail :favicon
+= table.row :name
+= table.association :establishment, label_method: :human, link_to: ->(r) { [r.establishment] }
+= table.timestamp :established_at
+= table.row :active_members_count
+= table.row :active_members_average_age
+= table.field :vat_identifier
+= table.field :tax_number
+= table.timestamps

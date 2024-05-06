@@ -3,7 +3,7 @@ module Tfc::Mdm
     class Category < ApplicationRecord
       include Tfc::Mdm::Model::ValueTranslationConcern
 
-      belongs_to :club, class_name: 'Tfc::Mdm::Club'
+      belongs_to :club, class_name: "Tfc::Mdm::Clubs::Club"
       has_many :memberships, class_name: 'Tfc::Mdm::Memberships::Membership'
       has_many :fees, class_name: 'Tfc::Mdm::Memberships::Fee', dependent: :destroy
       has_one :current_fee, -> { active }, class_name: 'Tfc::Mdm::Memberships::Fee'

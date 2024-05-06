@@ -38,6 +38,9 @@ module Tfc
           validates :valid_from, presence: true
           validates :valid_to,   presence: true
           after_initialize :set_validity_defaults, if: :new_record?
+
+          scope :active_at, ->(point_in_time) { where("valid_from <= :point_in_time AND valid_to >= :point_in_time", point_in_time: point_in_time) }
+          scope :active, -> { active_at(Time.zone.now) }
         end
 
         private

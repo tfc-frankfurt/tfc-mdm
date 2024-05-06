@@ -1,6 +1,6 @@
 module Tfc::Mdm
   class Positions::Entry < ApplicationRecord
-    belongs_to :club
+    belongs_to :club, class_name: "Tfc::Mdm::Clubs::Club"
     belongs_to :position
     belongs_to :positionable, polymorphic: true
     has_one :exit

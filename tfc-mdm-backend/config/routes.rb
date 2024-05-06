@@ -6,12 +6,9 @@ Tfc::Mdm::Backend::Engine.routes.draw do
   resources :notify_about_new_membership_agreement_service, only: [:new, :create]
 
   resources :establishments
-  resources :branches
-  resources :clubs do
-    get :autocomplete, on: :collection
-  end
   resources :membership_agreements
   resources :membership_cancellations
+  resources :number_ranges
   resources :people do
     get :autocomplete, on: :collection
   end
@@ -30,13 +27,26 @@ Tfc::Mdm::Backend::Engine.routes.draw do
     end
   end
 
+  namespace :clubs do
+    resources :bank_details
+    resources :branches
+    resources :clubs do
+      get :autocomplete, on: :collection
+    end
+    resources :email_addresses
+    resources :phone_numbers
+    resources :social_media
+  end
+
   namespace :memberships do
     resources :billing_run_services, only: [:new, :create]
     resources :categories
     resources :events
     resources :event_types
     resources :fees
-    resources :memberships
+    resources :memberships do
+      get :autocomplete, on: :collection
+    end
     resources :import_from_membership_agreement_services, only: [:new, :create]
   end
 

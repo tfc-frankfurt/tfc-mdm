@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :tfc_mdm_positions_entry, class: 'Tfc::Mdm::Positions::Entry' do
-    association(:club, factory: :tfc_mdm_club)
+    association(:club, factory: :tfc_mdm_clubs_club)
     association(:position, factory: :tfc_mdm_positions_position )
     association(:positionable, factory: :tfc_mdm_person)
     happened_at { 1.year.ago }

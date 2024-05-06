@@ -7,7 +7,7 @@ RSpec.describe "/de/backend/vereinsstammdaten/achievements/achievements", type: 
 
   let(:category) { create(:tfc_mdm_achievements_category) }
   let(:achiever) { create(:tfc_mdm_person) }
-  let(:club) { create(:tfc_mdm_club) }
+  let(:club) { create(:tfc_mdm_clubs_club) }
 
   # List
   it { resources; expect(subject).to implement_index_action(self) }

@@ -18,7 +18,7 @@ RSpec.describe "/de/backend/vereinsstammdaten/create_club_from_establishment_ser
   
     select establishment.human, from: "create_club_from_establishment_service[establishment_id]"
 
-    expect { click_button "Ausführen" }.to change(Tfc::Mdm::Club, :count).by(1)
+    expect { click_button "Ausführen" }.to change(Tfc::Mdm::Clubs::Club, :count).by(1)
 
     expect(page).to have_http_status(:ok)
     expect(page).to have_current_path(base_path)

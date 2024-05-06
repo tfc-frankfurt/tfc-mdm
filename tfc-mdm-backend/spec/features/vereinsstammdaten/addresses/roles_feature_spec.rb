@@ -5,7 +5,7 @@ RSpec.describe "/de/backend/vereinsstammdaten/addresses/roles", type: :feature d
   let(:resource) { create(:tfc_mdm_addresses_role) }
   let(:resources) { create_list(:tfc_mdm_addresses_role, 3) }
 
-  let(:club) { create(:tfc_mdm_club) }
+  let(:club) { create(:tfc_mdm_clubs_club) }
 
   # List
   it { resources; expect(subject).to implement_index_action(self) }

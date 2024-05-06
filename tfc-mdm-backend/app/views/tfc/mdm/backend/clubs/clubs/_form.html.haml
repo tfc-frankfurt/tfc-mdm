@@ -1,0 +1,7 @@
+= form.association :establishment
+- if form.object.persisted?
+  = form.input :name
+= form.input :logo
+= form.input :favicon
+= form.input :tax_number
+= form.input :vat_identifier

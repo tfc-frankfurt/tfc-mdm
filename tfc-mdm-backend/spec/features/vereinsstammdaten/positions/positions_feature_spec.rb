@@ -5,7 +5,7 @@ RSpec.describe "/de/backend/vereinsstammdaten/positions/positions", type: :featu
   let(:resource) { create(:tfc_mdm_positions_position) }
   let(:resources) { create_list(:tfc_mdm_positions_position, 3) }
 
-  let(:club) { create(:tfc_mdm_club) }
+  let(:club) { create(:tfc_mdm_clubs_club) }
 
   # List
   it { resources; expect(subject).to implement_index_action(self) }

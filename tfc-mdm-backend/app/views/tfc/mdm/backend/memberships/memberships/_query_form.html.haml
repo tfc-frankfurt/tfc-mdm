@@ -1,9 +1,17 @@
 .row
   .col
-    = form.input :club_id_eq, collection: Tfc::Mdm::Club.all, label_method: :human
+    = form.input :club_id_eq, collection: Tfc::Mdm::Clubs::Club.all, label_method: :human
   .col
     = form.input :firstname_cont, association: :person
   .col
     = form.input :lastname_cont, association: :person
   .col
+    = form.input :membership_number_cont
+  .col
     = form.input :category_id_eq, collection: Tfc::Mdm::Memberships::Category.all, label_method: :human
+
+%hr
+
+.row
+  .col
+    = form.scope_button(:active)

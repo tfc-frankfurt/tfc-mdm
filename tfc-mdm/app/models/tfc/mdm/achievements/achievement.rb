@@ -2,7 +2,7 @@ module Tfc::Mdm
   class Achievements::Achievement < ApplicationRecord
     include ActsAsPublished::ActiveRecord
 
-    belongs_to :club
+    belongs_to :club, class_name: "Tfc::Mdm::Clubs::Club"
     belongs_to :category
     belongs_to :achiever, polymorphic: true
 

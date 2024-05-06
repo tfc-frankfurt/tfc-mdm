@@ -6,7 +6,7 @@ RSpec.describe "/de/backend/vereinsstammdaten/memberships/memberships", type: :f
   let(:resources) { create_list(:tfc_mdm_memberships_membership, 3) }
 
   let(:category) { create(:tfc_mdm_memberships_category) }
-  let(:club) { create(:tfc_mdm_club) }
+  let(:club) { create(:tfc_mdm_clubs_club) }
   let(:person) { create(:tfc_mdm_person) }
 
   # List

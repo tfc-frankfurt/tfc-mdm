@@ -1,0 +1,5 @@
+.row
+  .col-12.col-md-6
+    = form.input :record_type_eq, collection: resource_class.pluck(:record_type).uniq.collect { |record_type| [record_type.constantize.model_name.human, record_type] }
+  .col-12.col-md-6
+    = form.input :role_id_eq, collection: Tfc::Mdm::Addresses::Role.all.collect { |role| [role.human, role.id] }

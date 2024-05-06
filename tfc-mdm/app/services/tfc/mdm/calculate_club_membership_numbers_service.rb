@@ -45,23 +45,20 @@ module Tfc
       end
 
       def agreements_for_year(year)
-        # club.membership_agreements.happened_in_year(year)
         club.memberships_events.agreements.for_year(year)
       end
 
       def terminations_for_year(year)
-        # club.membership_cancellations.happened_in_year(year)
         club.memberships_events.terminations.for_year(year)
       end
 
       def active_members_at_start_of_year(year)
-        # club.membership_agreements.happened_before(year.beginning_of_year).not_cancelled
         club.memberships.active_at(year.beginning_of_year)
       end
 
       def active_members_at_end_of_year(year)
-        # club.membership_agreements.happened_before(year.end_of_year).not_cancelled
-        club.memberships.active_at(year.end_of_year)
+        # adding 1 second to the end of the year to fix counting memberships that end at the end of the year
+        club.memberships.active_at(year.end_of_year + 1.second)
       end
     end
   end

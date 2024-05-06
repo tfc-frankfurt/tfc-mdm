@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :tfc_mdm_membership_agreement, class: Tfc::Mdm::MembershipAgreement do
     association :person, factory: :tfc_mdm_person
-    association :club, factory: :tfc_mdm_club
+    association :club, factory: :tfc_mdm_clubs_club
     salutation  { "Frau" }
     firstname   { "Jane" }
     lastname    { "Doe" }

@@ -1,6 +1,6 @@
 module Tfc::Mdm
   class Positions::Position < ApplicationRecord
-    belongs_to :club
+    belongs_to :club, class_name: "Tfc::Mdm::Clubs::Club"
     has_many :entries
 
     validates :name_de, presence: true, uniqueness: { scope: [ :club_id ] }

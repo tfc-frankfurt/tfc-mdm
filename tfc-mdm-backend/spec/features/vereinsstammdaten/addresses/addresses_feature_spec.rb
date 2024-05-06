@@ -5,7 +5,7 @@ RSpec.describe "/de/backend/vereinsstammdaten/addresses/addresses", type: :featu
   let(:resource) { create(:tfc_mdm_addresses_address) }
   let(:resources) { create_list(:tfc_mdm_addresses_address, 3) }
 
-  let(:club) { create(:tfc_mdm_club) }
+  let(:club) { create(:tfc_mdm_clubs_club) }
   let(:role) { create(:tfc_mdm_addresses_role) }
 
   # List

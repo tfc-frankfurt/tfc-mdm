@@ -1,9 +1,10 @@
 module Tfc::Mdm
   class Memberships::Membership < ApplicationRecord
+    include SimpleFormPolymorphicAssociations::Model::AutocompleteConcern
     include Tfc::Mdm::Model::ActiveConcern
     include Tfc::Mdm::Model::ValueTranslationConcern
 
-    belongs_to :club
+    belongs_to :club, class_name: "Tfc::Mdm::Clubs::Club"
     belongs_to :person
     belongs_to :category
     has_many :events, dependent: :destroy
@@ -11,6 +12,9 @@ module Tfc::Mdm
     has_many :billed_items, class_name: "Bgit::Invoicing::BilledItem", as: :billable, dependent: :restrict_with_error
     has_many :line_items, through: :billed_items, class_name: "Bgit::Invoicing::LineItem"
     has_many :invoices, through: :billed_items, class_name: "Bgit::Invoicing::Invoice", source: :line_item
+    has_many :journals, class_name: "Keepr::Journal", as: :accountable, dependent: :restrict_with_error if Object.const_defined?("Keepr")
+    has_many :postings, through: :journals, class_name: "Keepr::Posting", source: :keepr_postings
+    has_one :user, through: :person
 
     scope :started_in_year, ->(year) { started_after(year.beginning_of_year).started_before(year.end_of_year) }
     scope :started_before, ->(point_in_time) { where("active_from < ?", point_in_time) }
@@ -19,6 +23,10 @@ module Tfc::Mdm
     scope :ended_in_year, ->(year) { ended_after(year.beginning_of_year).ended_before(year.end_of_year) }
     scope :ended_before, ->(point_in_time) { where("active_to < ?", point_in_time) }
     scope :ended_after, ->(point_in_time) { where("active_to > ?", point_in_time) }
+
+    autocomplete scope: ->(matcher) { joins(:person).where("lower(tfc_mdm_people.firstname) LIKE :term OR lower(tfc_mdm_people.lastname) LIKE :term", term: "%#{matcher.downcase}%") }, id_method: :id, text_method: :human
+
+    delegate :email, to: :user, prefix: true
 
     after_touch do
       update_active_from_and_active_to_from_events!
@@ -29,6 +37,10 @@ module Tfc::Mdm
 
     def human
       [club.human, person.human, category.human].join(" - ")
+    end
+
+    def self.human_scope_name(scope)
+      I18n.t(scope, scope: "activerecord.scopes.#{model_name.i18n_key}")
     end
 
     def update_active_from_and_active_to_from_events!
@@ -74,5 +86,24 @@ module Tfc::Mdm
         category.fees.active_at(month).first&.amount_cents || 0
       end
     end
+
+    module MembershipNumberConcern
+      extend ActiveSupport::Concern
+
+      included do
+        after_create :set_membership_number
+      end
+
+      def set_membership_number
+        self.membership_number = Tfc::Mdm::NumberRanges::NextNumberService.call!(identifier: "membership_number").value
+      end
+
+      def set_membership_number!
+        set_membership_number
+        save!
+      end
+    end
+
+    include MembershipNumberConcern
   end
 end

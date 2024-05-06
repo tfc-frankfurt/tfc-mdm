@@ -8,7 +8,7 @@ RSpec.describe "/de/backend/vereinsstammdaten/membership_agreements", type: :fea
   let(:resources) { create_list(:tfc_mdm_membership_agreement, 3) }
   let(:attributes) { attributes_for(:tfc_mdm_membership_agreement) }
 
-  let(:tfc_mdm_club) { create(:tfc_mdm_club) }
+  let(:tfc_mdm_club) { create(:tfc_mdm_clubs_club) }
 
   # List
   it { resources; expect(subject).to implement_index_action(self) }

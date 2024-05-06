@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Tfc::Mdm::Memberships::ImportFromMembershipAgreementService, type: :service do
   describe "basic usage" do
-    let(:tfc_mdm_club) { create(:tfc_mdm_club) }
+    let(:tfc_mdm_club) { create(:tfc_mdm_clubs_club) }
     let(:tfc_mdm_memberships_category) { create(:tfc_mdm_memberships_category, club: tfc_mdm_club, identifier: "active") }
     let(:membership_agreement) { create(:tfc_mdm_membership_agreement, club: tfc_mdm_club) }
     let(:membership_cancellation) { create(:tfc_mdm_membership_cancellation, membership_agreement: membership_agreement) }
@@ -12,6 +12,7 @@ RSpec.describe Tfc::Mdm::Memberships::ImportFromMembershipAgreementService, type
     subject { described_class.new(attributes, options) }
 
     before(:each) do
+      Tfc::Mdm::NumberRanges::SeedService.call!
       tfc_mdm_memberships_category
       membership_cancellation
     end
@@ -32,6 +33,10 @@ RSpec.describe Tfc::Mdm::Memberships::ImportFromMembershipAgreementService, type
       it { expect { subject.perform }.to change { Tfc::Mdm::Memberships::Event.terminations.count }.from(0).to(1) }
       it { expect { subject.perform }.to change { Tfc::Mdm::Memberships::EventType.pluck(:identifier) }.from([]).to(["agreement", "termination"]) }
       it { expect { subject.perform }.to change { User.count }.by(1) }
+      if Object.const_defined?("Bgit::Accounting")
+        it { expect { subject.perform }.to change { Bgit::Accounting::Accounting::Account.assets.count }.by(1) }
+        it { expect { subject.perform }.to change { Bgit::Accounting::Accounting::Account.liabilities.count }.by(1) }
+      end
     end
   end
 end
