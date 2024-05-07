@@ -341,6 +341,9 @@ de:
         club: Verein
         name_de: Name (Deutsch)
         name_en: Name (English)
+    scopes:
+      tfc/mdm/memberships/membership:
+        active: Aktiv
     values:
       tfc/mdm/addresses/role:
         identifier:
