@@ -5,6 +5,8 @@ module Tfc
     module Backend
       module Clubs
         class BranchesController < Cmor::Core::Backend::ResourcesController::Base
+          include SimpleFormPolymorphicAssociations::Controller::AutocompleteConcern
+
           view_helper Twitter::Bootstrap::Components::Rails::V4::ViewHelper, as: :bootstrap_helper
           view_helper Tfc::Mdm::Backend::ApplicationViewHelper, as: :tfc_mdm_backend_helper
 

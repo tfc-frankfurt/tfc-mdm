@@ -4,12 +4,15 @@ module Tfc
   module Mdm
     module Clubs
       class Branch < ActiveRecord::Base
+        include SimpleFormPolymorphicAssociations::Model::AutocompleteConcern
         belongs_to :club # , class_name: "Tfc::Mdm::Clubs::Club"
 
         validates :club, :identifier, :valid_from, :valid_to, presence: true
         validates :identifier, uniqueness: { scope: [:club_id] }
 
         has_many_attached :assets
+
+        autocomplete scope: ->(matcher) { where("lower(tfc_mdm_clubs_branches.name) LIKE :term", term: "%#{matcher.downcase}%") }, id_method: :id, text_method: :human
 
         scope :valid, -> { valid_at(Time.zone.now) }
         scope :valid_at, ->(moment) {

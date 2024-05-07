@@ -29,7 +29,9 @@ Tfc::Mdm::Backend::Engine.routes.draw do
 
   namespace :clubs do
     resources :bank_details
-    resources :branches
+    resources :branches do
+      get :autocomplete, on: :collection
+    end
     resources :clubs do
       get :autocomplete, on: :collection
     end
