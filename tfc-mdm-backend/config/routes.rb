@@ -53,7 +53,9 @@ Tfc::Mdm::Backend::Engine.routes.draw do
   end
 
   namespace :positions do
-    resources :positions
+    resources :positions do
+      post :reposition, on: :member
+    end
     resources :entries
     resources :exits
   end

@@ -3,6 +3,8 @@ module Tfc::Mdm
     belongs_to :club, class_name: "Tfc::Mdm::Clubs::Club"
     has_many :entries
 
+    acts_as_list scope: :club
+
     validates :name_de, presence: true, uniqueness: { scope: [ :club_id ] }
     validates :name_en, presence: true, uniqueness: { scope: [ :club_id ] }
 

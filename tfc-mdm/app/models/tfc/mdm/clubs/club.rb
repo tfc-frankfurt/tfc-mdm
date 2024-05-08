@@ -25,6 +25,7 @@ module Tfc
         has_many :memberships, class_name: "Tfc::Mdm::Memberships::Membership"
         has_many :memberships_events, through: :memberships, class_name: "Tfc::Mdm::Memberships::Event", source: :events
         has_many :people, through: :memberships, dependent: :restrict_with_error
+        has_many :positions, -> { order(position: :asc) }, class_name: "Tfc::Mdm::Positions::Position", dependent: :destroy
 
         has_one_attached :logo
         has_one_attached :favicon

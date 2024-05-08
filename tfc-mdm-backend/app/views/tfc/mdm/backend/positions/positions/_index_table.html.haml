@@ -1,0 +1,6 @@
+= table.acts_as_list_actions
+= table.id sort: true
+= table.association :club, label_method: ->(r) { administrador_helper(self).label_for(r) }, link_to: ->(r) { url_for(r.club) }
+= table.field :name_de, sort: true
+= table.field :name_en, sort: true
+= table.timestamps sort: true

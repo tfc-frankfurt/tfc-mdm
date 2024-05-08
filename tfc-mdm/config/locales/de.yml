@@ -119,12 +119,13 @@ de:
         id: ID
         active_from: Gültig von
         active_to: Gültig bis
-        amount: Betrag
         amount_cents: Betrag (Cent)
+        amount: Betrag
         description: Beschreibung
-        name: Name
         happened_at: Zeitpunkt
         identifier: Bezeichner
+        name: Name
+        position: Position
         uuid: UUID
         created_at: Erstellt am
         updated_at: Aktualisiert am

@@ -5,6 +5,8 @@ module Tfc
     module Backend
       module Positions
         class PositionsController < Cmor::Core::Backend::ResourcesController::Base
+          include Rao::ResourcesController::ActsAsListConcern
+
           def self.engine_class
             ::Tfc::Mdm::Backend::Engine
           end
@@ -16,7 +18,7 @@ module Tfc
           private
 
             def load_collection_scope
-              super.includes(:club)
+              super.joins(:club).order(:club_id, :position)
             end
 
             def permitted_params

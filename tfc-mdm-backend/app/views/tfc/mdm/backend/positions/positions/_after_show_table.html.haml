@@ -1,0 +1,21 @@
+%h3= Tfc::Mdm::Positions::Entry.model_name.human(count: :other)
+
+= collection_table(collection: resource.entries) do |table|
+  = table.association :club, label_method: ->(r) { administrador_helper(self).label_for(r) }, link_to: ->(r) { url_for(r.club) }
+  = table.association :positionable, label_method: ->(r) { administrador_helper(self).label_for(r) }, link_to: ->(r) { url_for(r.positionable) }
+  = table.association :exit, label_method: ->(r) { administrador_helper(self).label_for(r) }, link_to: ->(r) { url_for(r.exit) }
+  = table.email :email
+  = table.timestamp :happened_at, sort: true
+  = table.timestamps sort: true
+  = table.field :actions, title: false do |r|
+    - capture_haml do
+      .btn-group
+        = link_to(r, class: "btn btn-xs btn-responsive btn-primary") do
+          %i.fa.fa-eye
+          %span.btn-text= t('.show')
+        = link_to([:edit, r], class: "btn btn-xs btn-responsive btn-secondary") do
+          %i.fa.fa-edit
+          %span.btn-text= t('.edit')
+        = link_to(r, class: "btn btn-xs btn-responsive btn-danger", method: :delete, data: { confirm: t('administrador.controller.confirmations.destroy') }) do
+          %i.fa.fa-eye
+          %span.btn-text= t('.destroy')
