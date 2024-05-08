@@ -333,8 +333,13 @@ de:
         <<: *shared
         club_id: Verein
         club: Verein
+        entry: Amtsantritt
         entry_id: Amtsantritt
         happened_at: Zeitpunkt
+        position: Amt
+        position_id: Amt
+        positionable: Amtsträger
+        positionable_id: Amtsträger
       tfc/mdm/positions/position:
         <<: *shared
         club_id: Verein
@@ -371,6 +376,12 @@ de:
     tfc/mdm/membership_cancellation_signed: Austritt
     tfc/mdm/membership_agreement_signed: Beitritt
     tfc/mdm/person_born: Geburt
+  modules:
+    tfc/mdm/backend/achievements: Errungenschaften
+    tfc/mdm/backend/addresses: Adressen
+    tfc/mdm/backend/clubs: Vereine
+    tfc/mdm/backend/memberships: Mitgliedschaften
+    tfc/mdm/backend/positions: Ämter
   rao:
     component:
       collection_table:

@@ -13,6 +13,8 @@ Tfc::Mdm::Backend.configure do |config|
   #            Tfc::Mdm::Backend::MembershipCancellationsController,
   #            Tfc::Mdm::Backend::NumberRangesController,
   #            Tfc::Mdm::Backend::PeopleController
+  #            Tfc::Mdm::Backend::Achievements::CategoriesController,
+  #            Tfc::Mdm::Backend::Achievements::AchievementsController,
   #            Tfc::Mdm::Backend::Addresses::AddressesController,
   #            Tfc::Mdm::Backend::Addresses::RolesController,
   #            Tfc::Mdm::Backend::Memberships::CategoriesController,
@@ -25,7 +27,9 @@ Tfc::Mdm::Backend.configure do |config|
   #            Tfc::Mdm::Backend::Clubs::ClubsController,
   #            Tfc::Mdm::Backend::Clubs::EmailAddressesController,
   #            Tfc::Mdm::Backend::Clubs::PhoneNumbersController,
-  #            Tfc::Mdm::Backend::Clubs::SocialMediaController
+  #            Tfc::Mdm::Backend::Clubs::SocialMediaController,
+  #            Tfc::Mdm::Backend::Positions::EntriesController,
+  #            Tfc::Mdm::Backend::Positions::ExitsController
   #          ]}
   #
   config.registered_controllers = -> {[
@@ -34,6 +38,8 @@ Tfc::Mdm::Backend.configure do |config|
     Tfc::Mdm::Backend::MembershipCancellationsController,
     Tfc::Mdm::Backend::NumberRangesController,
     Tfc::Mdm::Backend::PeopleController,
+    Tfc::Mdm::Backend::Achievements::CategoriesController,
+    Tfc::Mdm::Backend::Achievements::AchievementsController,
     Tfc::Mdm::Backend::Addresses::AddressesController,
     Tfc::Mdm::Backend::Addresses::RolesController,
     Tfc::Mdm::Backend::Memberships::CategoriesController,
@@ -46,7 +52,10 @@ Tfc::Mdm::Backend.configure do |config|
     Tfc::Mdm::Backend::Clubs::ClubsController,
     Tfc::Mdm::Backend::Clubs::EmailAddressesController,
     Tfc::Mdm::Backend::Clubs::PhoneNumbersController,
-    Tfc::Mdm::Backend::Clubs::SocialMediaController
+    Tfc::Mdm::Backend::Clubs::SocialMediaController,
+    Tfc::Mdm::Backend::Positions::PositionsController,
+    Tfc::Mdm::Backend::Positions::EntriesController,
+    Tfc::Mdm::Backend::Positions::ExitsController
   ]}
 
   # Set the services, that will be shown in the backend menu.
@@ -55,13 +64,15 @@ Tfc::Mdm::Backend.configure do |config|
   #            Tfc::Mdm::Backend::CreateClubFromEstablishmentServiceController,
   #            Tfc::Mdm::Backend::CreatePersonFromMembershipAgreementServiceController,
   #            Tfc::Mdm::Backend::NotifyAboutNewMembershipAgreementServiceController,
-  #            Tfc::Mdm::Backend::Memberships::ImportFromMembershipAgreementServicesController
+  #            Tfc::Mdm::Backend::Memberships::ImportFromMembershipAgreementServicesController,
+  #            Tfc::Mdm::Backend::Memberships::BillingRunServicesController
   #          ]}
   # 
   config.registered_services = -> {[
     Tfc::Mdm::Backend::CreateClubFromEstablishmentServiceController,
     Tfc::Mdm::Backend::CreatePersonFromMembershipAgreementServiceController,
     Tfc::Mdm::Backend::NotifyAboutNewMembershipAgreementServiceController,
-    Tfc::Mdm::Backend::Memberships::ImportFromMembershipAgreementServicesController
+    Tfc::Mdm::Backend::Memberships::ImportFromMembershipAgreementServicesController,
+    Tfc::Mdm::Backend::Memberships::BillingRunServicesController
   ]}
 end
