@@ -13,7 +13,7 @@ module Tfc::Mdm
     has_many :line_items, through: :billed_items, class_name: "Bgit::Invoicing::LineItem"
     has_many :invoices, through: :billed_items, class_name: "Bgit::Invoicing::Invoice", source: :line_item
     has_many :journals, class_name: "Keepr::Journal", as: :accountable, dependent: :restrict_with_error if Object.const_defined?("Keepr")
-    has_many :postings, through: :journals, class_name: "Keepr::Posting", source: :keepr_postings
+    has_many :postings, through: :journals, class_name: "Keepr::Posting", source: :keepr_postings if Object.const_defined?("Keepr")
     has_one :user, through: :person
 
     scope :started_in_year, ->(year) { started_after(year.beginning_of_year).started_before(year.end_of_year) }
